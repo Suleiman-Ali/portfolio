@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;500;600;700&display=swap');
+
+$background-color-light: #1a1a1a;
+$background-color-dark: #111111;
+$red: #fd2155;
+$blue: #81d8f7;
+$yellow: #e4ee89;
+$green: #08fdd8;
+$purple: #9a6bff;
+$bp-500: 500px;
+$bp-700: 700px;
+$bp-800: 799px;
+$bp-1000: 999px;
+$bp-1200: 1199px;
+
+html {
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Signika Negative', sans-serif;
+}
+
+body {
+  background-color: $background-color-light;
+}
+
+.app {
+  color: white;
+  font-size: 2rem;
+  min-height: 100vh;
+  position: relative;
+}
+
+.opening {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color-dark;
+
+  .svg {
+    width: 100px;
+
+    &__circle {
+      fill: transparent;
+      stroke: $red;
+      stroke-miterlimit: 10;
+      stroke-width: 5px;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: stroke 1.5s ease-in-out forwards;
+
+      @keyframes stroke {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+
+    &__text {
+      font-size: 125px;
+      fill: $red;
+      opacity: 0;
+      animation: fade-in 1.5s ease-in-out forwards;
+
+      @keyframes fade-in {
+        to {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.svg-fade-out {
+  animation: fade-out 0.5s linear forwards;
+
+  @keyframes fade-out {
+    100% {
+      width: 0;
+    }
+  }
+}
+.opening-fade-out {
+  animation: fade-out-opening 0.5s linear forwards;
+
+  @keyframes fade-out-opening {
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+.navSmall {
+  &__box {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__menu {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: -2000px;
+    width: 100%;
+    height: 100%;
+    background-color: $background-color-dark;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn {
+    position: relative;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: $red;
+    font-size: 3rem;
+    opacity: 0.75;
+    cursor: pointer;
+    transition: all 0.25s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background-color: currentColor;
+      border-radius: 3px;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      &::before {
+        animation: btn-border-grow 0.25s forwards;
+        @keyframes btn-border-grow {
+          to {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  &__btnResume {
+    background-color: transparent;
+    outline: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    color: $red;
+    border: 3px solid currentColor;
+    border-radius: 3px;
+    transition: all 0.25s;
+    text-decoration: none;
+
+    &::before {
+      animation: none !important;
+    }
+
+    &:hover {
+      background-color: rgba($red, 0.1);
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5rem;
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__btn {
+    position: relative;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: $red;
+    font-size: 2.25rem;
+    opacity: 0.75;
+    cursor: pointer;
+    transition: all 0.25s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background-color: currentColor;
+      border-radius: 3px;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      &::before {
+        animation: btn-border-grow 0.25s forwards;
+        @keyframes btn-border-grow {
+          to {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  &__btnResume {
+    background-color: transparent;
+    outline: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    color: $red;
+    border: 3px solid currentColor;
+    border-radius: 3px;
+    transition: all 0.25s;
+    text-decoration: none;
+
+    &::before {
+      animation: none !important;
+    }
+
+    &:hover {
+      background-color: rgba($red, 0.1);
+    }
+  }
+}
+
+.logo {
+  position: relative;
+  width: 50px;
+  cursor: pointer;
+
+  &:hover {
+    circle {
+      fill: rgba($red, 0.1);
+    }
+  }
+
+  &__circle {
+    fill: transparent;
+    stroke: $red;
+    stroke-miterlimit: 10;
+    stroke-width: 5px;
+    transition: all 0.25s;
+  }
+  &__text {
+    font-size: 125px;
+    fill: $red;
+  }
+}
+
+.intro {
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  @media screen and (min-width: $bp-800) {
+    padding: 10rem 10rem;
+  }
+
+  @media screen and (min-width: $bp-1000) {
+    padding: 10rem 17.5rem;
+  }
+
+  @media screen and (min-width: $bp-1200) {
+    padding: 10rem 25rem;
+  }
+
+  &__hi {
+    width: max-content;
+    position: relative;
+    font-size: 1.75rem;
+    color: $green;
+
+    &::before {
+      content: '<p>';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -5rem;
+      font-style: italic;
+      color: #8d8d8d;
+      font-weight: 300;
+
+      @media screen and (max-width: $bp-800) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: '</p>';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -5rem;
+      font-style: italic;
+      color: #8d8d8d;
+      font-weight: 300;
+      @media screen and (max-width: $bp-800) {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 2rem;
+    }
+
+    @media screen and (min-width: $bp-700) {
+      font-size: 2.25rem;
+    }
+  }
+
+  &__name {
+    max-width: max-content;
+    position: relative;
+    font-size: 4rem;
+    color: $red;
+
+    &::before {
+      content: '<h1>';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -5rem;
+      font-style: italic;
+      color: #8d8d8d;
+      font-weight: 300;
+      @media screen and (max-width: $bp-800) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: '</h1>';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -5rem;
+      font-style: italic;
+      color: #8d8d8d;
+      font-weight: 300;
+      @media screen and (max-width: $bp-800) {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 5rem;
+    }
+
+    @media screen and (min-width: $bp-700) {
+      font-size: 6rem;
+    }
+  }
+
+  &__title {
+    max-width: max-content;
+    position: relative;
+    font-size: 2.25rem;
+    color: $blue;
+
+    &::before {
+      content: '<p>';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -5rem;
+      font-style: italic;
+      color: #8d8d8d;
+      font-weight: 300;
+      @media screen and (max-width: $bp-800) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: '</p>';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -5rem;
+      font-style: italic;
+      color: #8d8d8d;
+      font-weight: 300;
+      @media screen and (max-width: $bp-800) {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 2.75rem;
+    }
+
+    @media screen and (min-width: $bp-700) {
+      font-size: 3.25rem;
+    }
+  }
+
+  &__text {
+    position: relative;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    max-width: 400px;
+
+    &::before {
+      content: '<p>';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -5rem;
+      font-style: italic;
+      color: #8d8d8d;
+      font-weight: 300;
+      @media screen and (max-width: $bp-800) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: '</p>';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -5rem;
+      font-style: italic;
+      color: #8d8d8d;
+      font-weight: 300;
+      @media screen and (max-width: $bp-800) {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.75rem;
+      max-width: 500px;
+    }
+
+    @media screen and (min-width: $bp-700) {
+      font-size: 2rem;
+      line-height: 3rem;
+    }
+
+    @media screen and (min-width: $bp-1000) {
+      line-height: 3.5rem;
+      max-width: 650px;
+    }
+  }
+
+  &__btn {
+    max-width: max-content;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.75rem 3rem;
+    color: $red;
+    border: 3px solid currentColor;
+    border-radius: 3px;
+    transition: all 0.25s;
+    margin-top: 1rem;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.75rem;
+    }
+
+    @media screen and (min-width: $bp-700) {
+      font-size: 2rem;
+    }
+
+    &::before {
+      animation: none !important;
+    }
+
+    &:hover {
+      background-color: rgba($red, 0.1);
+    }
+  }
+}
+
+.links {
+  position: absolute;
+  bottom: 0;
+  left: 6.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media screen and (max-width: $bp-1000) {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 90px;
+    margin: 0.5rem auto 0 auto;
+    background-color: #8d8d8d;
+    border-radius: 3px;
+  }
+
+  &__link {
+    color: #8d8d8d;
+    font-size: 2rem;
+    transition: all 0.25s;
+
+    &:hover {
+      color: $red;
+      transform: scale(1.1);
+    }
+  }
+}
