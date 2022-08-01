@@ -2,12 +2,14 @@
 
 $background-color-light: #1a1a1a;
 $background-color-dark: #111111;
+$background-color-form: #2b2b2b;
 $red: #fd2155;
 $blue: #81d8f7;
 $yellow: #e4ee89;
 $green: #08fdd8;
 $purple: #9a6bff;
 $bp-500: 500px;
+$bp-600: 600px;
 $bp-700: 700px;
 $bp-800: 799px;
 $bp-1000: 999px;
@@ -15,6 +17,12 @@ $bp-1200: 1199px;
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: $red;
+  color: white;
 }
 
 *,
@@ -28,6 +36,27 @@ html {
 
 body {
   background-color: $background-color-light;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar {
+  width: 3px;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $red;
+  border-radius: 3px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
 
 .app {
@@ -35,177 +64,47 @@ body {
   font-size: 2rem;
   min-height: 100vh;
   position: relative;
-}
-
-.opening {
-  z-index: 3;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $background-color-dark;
-
-  .svg {
-    width: 100px;
-
-    &__circle {
-      fill: transparent;
-      stroke: $red;
-      stroke-miterlimit: 10;
-      stroke-width: 5px;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      animation: stroke 1.5s ease-in-out forwards;
-
-      @keyframes stroke {
-        to {
-          stroke-dashoffset: 0;
-        }
-      }
-    }
-
-    &__text {
-      font-size: 125px;
-      fill: $red;
-      opacity: 0;
-      animation: fade-in 1.5s ease-in-out forwards;
-
-      @keyframes fade-in {
-        to {
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
-
-.svg-fade-out {
-  animation: fade-out 0.5s linear forwards;
-
-  @keyframes fade-out {
-    100% {
-      width: 0;
-    }
-  }
-}
-.opening-fade-out {
-  animation: fade-out-opening 0.5s linear forwards;
-
-  @keyframes fade-out-opening {
-    100% {
-      opacity: 0;
-    }
-  }
+  flex-direction: column;
+  gap: 17.5rem;
 }
 
 .navSmall {
   &__box {
-    position: relative;
-    z-index: 2;
-    padding: 2rem 2rem;
+    padding: 1.25rem 2rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__menu {
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -2000px;
     width: 100%;
     height: 100%;
+    max-height: 100vh;
     background-color: $background-color-dark;
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
     align-items: center;
     justify-content: center;
+    z-index: 1;
   }
 
   &__btn {
-    position: relative;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    color: $red;
-    font-size: 3rem;
-    opacity: 0.75;
-    cursor: pointer;
-    transition: all 0.25s;
-
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 3px;
-      width: 0;
-      background-color: currentColor;
-      border-radius: 3px;
-    }
-
-    &:hover {
-      opacity: 1;
-
-      &::before {
-        animation: btn-border-grow 0.25s forwards;
-        @keyframes btn-border-grow {
-          to {
-            width: 100%;
-          }
-        }
-      }
-    }
-  }
-
-  &__btnResume {
-    background-color: transparent;
-    outline: none;
-    font-size: 2.5rem;
-    cursor: pointer;
-    padding: 0.75rem 1.5rem;
-    color: $red;
-    border: 3px solid currentColor;
-    border-radius: 3px;
-    transition: all 0.25s;
     text-decoration: none;
-
-    &::before {
-      animation: none !important;
-    }
-
-    &:hover {
-      background-color: rgba($red, 0.1);
-    }
-  }
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem 5rem;
-
-  &__buttons {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  &__btn {
     position: relative;
     background-color: transparent;
     outline: none;
     border: none;
     color: $red;
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     opacity: 0.75;
     cursor: pointer;
-    transition: all 0.25s;
+    transition: all 0.15s;
 
     &::before {
       content: '';
@@ -239,24 +138,134 @@ body {
     cursor: pointer;
     padding: 0.75rem 1.5rem;
     color: $red;
-    border: 3px solid currentColor;
     border-radius: 3px;
-    transition: all 0.25s;
+    transition: all 0.15s;
     text-decoration: none;
+    border: 3px solid $red;
+    box-shadow: 3px 3px 0 0 $red;
+
+    &:hover {
+      box-shadow: 0 0 0 0 $red;
+      background-color: rgba($red, 0.1);
+    }
 
     &::before {
       animation: none !important;
     }
+  }
+
+  &__iconOpen {
+    font-size: 3rem;
+    color: $red;
+    transition: all 0.15s;
+    cursor: pointer;
 
     &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+
+  &__iconClose {
+    position: absolute;
+    top: 4rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: $red;
+    transition: all 0.15s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5rem;
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__btn {
+    text-decoration: none;
+    position: relative;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: $red;
+    font-size: 2rem;
+    opacity: 0.75;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background-color: currentColor;
+      border-radius: 3px;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      &::before {
+        animation: btn-border-grow 0.25s forwards;
+        @keyframes btn-border-grow {
+          to {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  &__btnResume {
+    background-color: transparent;
+    outline: none;
+    font-size: 1.75rem;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    color: $red;
+    border: 3px solid currentColor;
+    border-radius: 3px;
+    transition: all 0.15s;
+    text-decoration: none;
+    border: 3px solid $red;
+    box-shadow: 3px 3px 0 0 $red;
+
+    &:hover {
+      box-shadow: 0 0 0 0 $red;
       background-color: rgba($red, 0.1);
+    }
+
+    &::before {
+      animation: none !important;
     }
   }
 }
 
 .logo {
   position: relative;
-  width: 50px;
+  width: 45px;
   cursor: pointer;
 
   &:hover {
@@ -266,11 +275,11 @@ body {
   }
 
   &__circle {
-    fill: transparent;
+    fill: rgb(25, 25, 25);
     stroke: $red;
     stroke-miterlimit: 10;
     stroke-width: 5px;
-    transition: all 0.25s;
+    transition: all 0.15s;
   }
   &__text {
     font-size: 125px;
@@ -279,73 +288,22 @@ body {
 }
 
 .intro {
-  padding: 5rem 2rem;
+  align-self: center;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 2rem 0 2rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 
   @media screen and (min-width: $bp-800) {
-    padding: 10rem 10rem;
-  }
-
-  @media screen and (min-width: $bp-1000) {
-    padding: 10rem 17.5rem;
-  }
-
-  @media screen and (min-width: $bp-1200) {
-    padding: 10rem 25rem;
-  }
-
-  &__hi {
-    width: max-content;
-    position: relative;
-    font-size: 1.75rem;
-    color: $green;
-
-    &::before {
-      content: '<p>';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: -5rem;
-      font-style: italic;
-      color: #8d8d8d;
-      font-weight: 300;
-
-      @media screen and (max-width: $bp-800) {
-        display: none;
-      }
-    }
-
-    &::after {
-      content: '</p>';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: -5rem;
-      font-style: italic;
-      color: #8d8d8d;
-      font-weight: 300;
-      @media screen and (max-width: $bp-800) {
-        display: none;
-      }
-    }
-
-    @media screen and (min-width: $bp-500) {
-      font-size: 2rem;
-    }
-
-    @media screen and (min-width: $bp-700) {
-      font-size: 2.25rem;
-    }
+    padding: 0 5rem 7.5rem 5rem;
   }
 
   &__name {
     max-width: max-content;
     position: relative;
-    font-size: 4rem;
+    font-size: 4.5rem;
     color: $red;
 
     &::before {
@@ -356,7 +314,7 @@ body {
       transform: translateY(-50%);
       left: -5rem;
       font-style: italic;
-      color: #8d8d8d;
+      color: #808080;
       font-weight: 300;
       @media screen and (max-width: $bp-800) {
         display: none;
@@ -371,7 +329,7 @@ body {
       transform: translateY(-50%);
       right: -5rem;
       font-style: italic;
-      color: #8d8d8d;
+      color: #808080;
       font-weight: 300;
       @media screen and (max-width: $bp-800) {
         display: none;
@@ -379,10 +337,6 @@ body {
     }
 
     @media screen and (min-width: $bp-500) {
-      font-size: 5rem;
-    }
-
-    @media screen and (min-width: $bp-700) {
       font-size: 6rem;
     }
   }
@@ -390,8 +344,8 @@ body {
   &__title {
     max-width: max-content;
     position: relative;
-    font-size: 2.25rem;
-    color: $blue;
+    font-size: 2.4rem;
+    color: $red;
 
     &::before {
       content: '<p>';
@@ -401,7 +355,7 @@ body {
       transform: translateY(-50%);
       left: -5rem;
       font-style: italic;
-      color: #8d8d8d;
+      color: #808080;
       font-weight: 300;
       @media screen and (max-width: $bp-800) {
         display: none;
@@ -416,7 +370,7 @@ body {
       transform: translateY(-50%);
       right: -5rem;
       font-style: italic;
-      color: #8d8d8d;
+      color: #808080;
       font-weight: 300;
       @media screen and (max-width: $bp-800) {
         display: none;
@@ -424,19 +378,21 @@ body {
     }
 
     @media screen and (min-width: $bp-500) {
-      font-size: 2.75rem;
-    }
-
-    @media screen and (min-width: $bp-700) {
-      font-size: 3.25rem;
+      font-size: 3rem;
     }
   }
 
   &__text {
     position: relative;
     margin-top: 1rem;
-    font-size: 1.5rem;
-    max-width: 400px;
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+    color: white;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.75rem;
+      line-height: 3rem;
+    }
 
     &::before {
       content: '<p>';
@@ -446,7 +402,7 @@ body {
       transform: translateY(-50%);
       left: -5rem;
       font-style: italic;
-      color: #8d8d8d;
+      color: #808080;
       font-weight: 300;
       @media screen and (max-width: $bp-800) {
         display: none;
@@ -461,26 +417,517 @@ body {
       transform: translateY(-50%);
       right: -5rem;
       font-style: italic;
-      color: #8d8d8d;
+      color: #808080;
       font-weight: 300;
       @media screen and (max-width: $bp-800) {
         display: none;
       }
     }
+  }
+
+  &__btn {
+    text-decoration: none;
+    max-width: max-content;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0.75rem 2.5rem;
+    color: $red;
+    border: 3px solid currentColor;
+    border-radius: 3px;
+    transition: all 0.15s;
+    margin-top: 1rem;
+    border: 3px solid $red;
+    box-shadow: 3px 3px 0 0 $red;
+
+    &:hover {
+      box-shadow: 0 0 0 0 $red;
+      background-color: rgba($red, 0.1);
+    }
 
     @media screen and (min-width: $bp-500) {
       font-size: 1.75rem;
-      max-width: 500px;
+    }
+
+    &::before {
+      animation: none !important;
+    }
+  }
+}
+
+.links {
+  position: fixed;
+  bottom: 0;
+  left: 6.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media screen and (max-width: $bp-1200) {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 40px;
+    margin: 0.5rem auto 0 auto;
+    background-color: $red;
+    border-radius: 3px;
+    opacity: 0.75;
+  }
+
+  &__link {
+    color: $red;
+    font-size: 2rem;
+    transition: all 0.15s;
+    opacity: 0.75;
+
+    &:hover {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+}
+
+.skills {
+  align-self: center;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 2rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  @media screen and (min-width: $bp-800) {
+    padding: 0 5rem 0 5rem;
+  }
+
+  &__heading {
+    font-size: 2.75rem;
+    color: $red;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 3.25rem;
+    }
+  }
+
+  &__box {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media screen and (min-width: $bp-500) {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     @media screen and (min-width: $bp-700) {
-      font-size: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__skill {
+    position: relative;
+    padding-left: 2rem;
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+    color: white;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.75rem;
+    }
+
+    &::before {
+      content: '▹';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      color: $red;
+    }
+  }
+}
+
+.projects {
+  align-self: center;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 2rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  @media screen and (min-width: $bp-800) {
+    padding: 0 5rem 0 5rem;
+  }
+
+  &__heading {
+    font-size: 2.75rem;
+    color: $red;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 3.25rem;
+    }
+  }
+
+  &__box {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+
+    @media screen and (min-width: $bp-700) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__project {
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 3px solid $red;
+    position: relative;
+    padding: 2rem;
+    box-shadow: 6px 6px 0 0 $red;
+    transition: all 0.15s;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 0 0 $red;
+    }
+  }
+
+  &__projectImg {
+    position: relative;
+    width: 100%;
+  }
+
+  &__folderIcon {
+    font-size: 4rem;
+    color: $red;
+  }
+
+  &__projectInnerBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__projectName {
+    font-size: 1.6rem;
+    color: $red;
+    font-weight: 700;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__projectDescription {
+    font-size: 1.5rem;
+    color: white;
+    line-height: 2.5rem;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__projectTechs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  &__projectTech {
+    position: relative;
+    font-size: 1.5rem;
+    color: white;
+    padding-left: 2rem;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.6rem;
+    }
+
+    &::before {
+      content: '▹';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      color: $red;
+    }
+  }
+
+  &__projectLinks {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    top: 3rem;
+    right: 2rem;
+  }
+
+  &__projectLink {
+    color: $red;
+    font-size: 2rem;
+    transition: all 0.15s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.about {
+  align-self: center;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 2rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  @media screen and (min-width: $bp-800) {
+    padding: 0 5rem 0 5rem;
+  }
+
+  &__heading {
+    font-size: 2.75rem;
+    color: $red;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 3.25rem;
+    }
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__innerBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__text {
+    position: relative;
+    font-size: 1.6rem;
+    color: white;
+    padding-left: 2rem;
+    line-height: 2.5rem;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.75rem;
       line-height: 3rem;
     }
 
-    @media screen and (min-width: $bp-1000) {
-      line-height: 3.5rem;
-      max-width: 650px;
+    &::before {
+      content: '▹';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      color: $red;
+    }
+  }
+
+  &__btn {
+    text-decoration: none;
+    max-width: max-content;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.75rem 2.5rem;
+    color: $red;
+    border-radius: 3px;
+    transition: all 0.15s;
+    border: 3px solid $red;
+    box-shadow: 3px 3px 0 0 $red;
+
+    &:hover {
+      box-shadow: 0 0 0 0 $red;
+      background-color: rgba($red, 0.1);
+    }
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.contact {
+  align-self: center;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 2rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  @media screen and (min-width: $bp-800) {
+    padding: 0 5rem 0 5rem;
+  }
+
+  &__heading {
+    font-size: 2.75rem;
+    color: $red;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 3.25rem;
+    }
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__text {
+    position: relative;
+    font-size: 1.6rem;
+    color: white;
+    line-height: 2.5rem;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.75rem;
+      line-height: 3rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__formMessage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 3rem;
+    border-radius: 3px;
+    background-color: $background-color-dark;
+
+    &Close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2.5rem;
+      cursor: pointer;
+      color: $red;
+
+      @media screen and (min-width: $bp-500) {
+        font-size: 3rem;
+      }
+    }
+
+    &Icon {
+      font-size: 3rem;
+      color: $red;
+
+      @media screen and (min-width: $bp-500) {
+        font-size: 3.5rem;
+      }
+    }
+
+    &Message {
+      font-size: 1.6rem;
+      line-height: 2.5rem;
+      color: white;
+
+      @media screen and (min-width: $bp-500) {
+        font-size: 1.75rem;
+      }
+    }
+  }
+
+  &__formMain {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__formBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media screen and (min-width: $bp-500) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__inputBox {
+    width: 100%;
+    position: relative;
+  }
+
+  &__input {
+    position: relative;
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 1.5rem;
+    background-color: $background-color-form;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 3px;
+
+    &:focus + div {
+      width: 100%;
+    }
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__inputAfter {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: $red;
+    border-radius: 3px;
+    transition: all 0.25s;
+  }
+
+  &__textarea {
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 1.5rem;
+    background-color: $background-color-form;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 3px;
+    resize: vertical;
+
+    &:focus + div {
+      width: 100%;
+    }
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.6rem;
     }
   }
 
@@ -490,61 +937,57 @@ body {
     outline: none;
     font-size: 1.5rem;
     cursor: pointer;
-    padding: 0.75rem 3rem;
+    padding: 0.75rem 2.5rem;
     color: $red;
-    border: 3px solid currentColor;
     border-radius: 3px;
-    transition: all 0.25s;
-    margin-top: 1rem;
-
-    @media screen and (min-width: $bp-500) {
-      font-size: 1.75rem;
-    }
-
-    @media screen and (min-width: $bp-700) {
-      font-size: 2rem;
-    }
-
-    &::before {
-      animation: none !important;
-    }
+    transition: all 0.15s;
+    border: 3px solid $red;
+    box-shadow: 3px 3px 0 0 $red;
 
     &:hover {
+      box-shadow: 0 0 0 0 $red;
       background-color: rgba($red, 0.1);
+    }
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.6rem;
     }
   }
 }
 
-.links {
-  position: absolute;
-  bottom: 0;
-  left: 6.25rem;
+.footerLinks {
+  align-self: center;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
-  @media screen and (max-width: $bp-1000) {
-    display: none;
-  }
-
-  &::after {
-    content: '';
-    display: block;
-    width: 2px;
-    height: 90px;
-    margin: 0.5rem auto 0 auto;
-    background-color: #8d8d8d;
-    border-radius: 3px;
+  &__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
   }
 
   &__link {
-    color: #8d8d8d;
-    font-size: 2rem;
-    transition: all 0.25s;
+    color: $red;
+    font-size: 2.25rem;
+    transition: all 0.15s;
+    opacity: 0.75;
 
     &:hover {
-      color: $red;
       transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  &__text {
+    font-size: 1.5rem;
+    color: $red;
+    line-height: 2.5rem;
+
+    @media screen and (min-width: $bp-500) {
+      font-size: 1.6rem;
     }
   }
 }

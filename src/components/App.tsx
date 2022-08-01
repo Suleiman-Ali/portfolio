@@ -1,24 +1,23 @@
-import { useEffect, useState } from 'react';
-import Intro from './Intro';
-import Links from './Links';
 import Navbar from './Navbar';
-import Opening from './Opening';
+import Intro from './Intro';
+import Skills from './Skills';
+import Projects from './Projects';
+import About from './About';
+import Contact from './Contact';
+import SideLinks from './SideLinks';
+import FooterLinks from './FooterLinks';
 
 function App() {
-  const [isOpening, setIsOpening] = useState<boolean>(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsOpening(false);
-    }, 2500);
-  }, []);
-
   return (
-    <div className="app">
-      {isOpening && <Opening />}
+    <div className="app" id="app">
+      <SideLinks />
       <Navbar />
       <Intro />
-      <Links />
+      <Skills />
+      <Projects />
+      <About />
+      <Contact />
+      <FooterLinks />
     </div>
   );
 }
