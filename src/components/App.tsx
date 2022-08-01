@@ -6,8 +6,15 @@ import About from './About';
 import Contact from './Contact';
 import SideLinks from './SideLinks';
 import FooterLinks from './FooterLinks';
+import Arrow from './Arrow';
+import Colors from './Colors';
+import { colors } from '../data';
+import { useState } from 'react';
 
 function App() {
+  const [selectedColor, setSelectedColor] = useState<string>(colors[0]);
+  const colorChangeHandler = (color: string) => setSelectedColor(color);
+
   return (
     <div className="app" id="app">
       <SideLinks />
@@ -16,8 +23,13 @@ function App() {
       <Skills />
       <Projects />
       <About />
-      <Contact />
+      <Contact currentColor={selectedColor} />
       <FooterLinks />
+      <Arrow />
+      <Colors
+        colorChangeHandler={colorChangeHandler}
+        selectedColor={selectedColor}
+      />
     </div>
   );
 }

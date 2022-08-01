@@ -3,11 +3,6 @@
 $background-color-light: #1a1a1a;
 $background-color-dark: #111111;
 $background-color-form: #2b2b2b;
-$red: #fd2155;
-$blue: #81d8f7;
-$yellow: #e4ee89;
-$green: #08fdd8;
-$purple: #9a6bff;
 $bp-500: 500px;
 $bp-600: 600px;
 $bp-700: 700px;
@@ -15,13 +10,17 @@ $bp-800: 799px;
 $bp-1000: 999px;
 $bp-1200: 1199px;
 
+:root {
+  --color: #fd2155;
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
 ::selection {
-  background-color: $red;
+  background-color: var(--color);
   color: white;
 }
 
@@ -49,7 +48,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: $red;
+  background-color: var(--color);
   border-radius: 3px;
 }
 
@@ -67,6 +66,45 @@ button {
   display: flex;
   flex-direction: column;
   gap: 17.5rem;
+}
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: fixed;
+  top: 50%;
+  right: 3rem;
+  transform: translateY(-50%);
+
+  @media screen and (max-width: $bp-1200) {
+    display: none;
+  }
+
+  &__color {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.75;
+
+    &--selected {
+      border: 2px solid white;
+      opacity: 1;
+    }
+  }
+}
+
+.arrowUp {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  color: var(--color);
+  cursor: pointer;
+  font-size: 2.5rem;
+  @media screen and (max-width: $bp-1200) {
+    display: none;
+  }
 }
 
 .navSmall {
@@ -100,7 +138,7 @@ button {
     background-color: transparent;
     outline: none;
     border: none;
-    color: $red;
+    color: var(--color);
     font-size: 2.5rem;
     opacity: 0.75;
     cursor: pointer;
@@ -137,16 +175,16 @@ button {
     font-size: 2rem;
     cursor: pointer;
     padding: 0.75rem 1.5rem;
-    color: $red;
+    color: var(--color);
     border-radius: 3px;
     transition: all 0.15s;
     text-decoration: none;
-    border: 3px solid $red;
-    box-shadow: 3px 3px 0 0 $red;
+    border: 3px solid var(--color);
+    box-shadow: 3px 3px 0 0 var(--color);
 
     &:hover {
-      box-shadow: 0 0 0 0 $red;
-      background-color: rgba($red, 0.1);
+      box-shadow: 0 0 0 0 var(--color);
+      background-color: rgba(var(--color), 0.1);
     }
 
     &::before {
@@ -156,7 +194,7 @@ button {
 
   &__iconOpen {
     font-size: 3rem;
-    color: $red;
+    color: var(--color);
     transition: all 0.15s;
     cursor: pointer;
 
@@ -174,7 +212,7 @@ button {
     top: 4rem;
     right: 2rem;
     font-size: 3rem;
-    color: $red;
+    color: var(--color);
     transition: all 0.15s;
     cursor: pointer;
 
@@ -207,7 +245,7 @@ button {
     background-color: transparent;
     outline: none;
     border: none;
-    color: $red;
+    color: var(--color);
     font-size: 2rem;
     opacity: 0.75;
     cursor: pointer;
@@ -244,17 +282,17 @@ button {
     font-size: 1.75rem;
     cursor: pointer;
     padding: 0.75rem 1.5rem;
-    color: $red;
+    color: var(--color);
     border: 3px solid currentColor;
     border-radius: 3px;
     transition: all 0.15s;
     text-decoration: none;
-    border: 3px solid $red;
-    box-shadow: 3px 3px 0 0 $red;
+    border: 3px solid var(--color);
+    box-shadow: 3px 3px 0 0 var(--color);
 
     &:hover {
-      box-shadow: 0 0 0 0 $red;
-      background-color: rgba($red, 0.1);
+      box-shadow: 0 0 0 0 var(--color);
+      background-color: rgba(var(--color), 0.1);
     }
 
     &::before {
@@ -267,27 +305,11 @@ button {
   position: relative;
   width: 45px;
   cursor: pointer;
-
-  &:hover {
-    circle {
-      fill: rgba($red, 0.1);
-    }
-  }
-
-  &__circle {
-    fill: rgb(25, 25, 25);
-    stroke: $red;
-    stroke-miterlimit: 10;
-    stroke-width: 5px;
-    transition: all 0.15s;
-  }
-  &__text {
-    font-size: 125px;
-    fill: $red;
-  }
+  fill: var(--color) !important;
 }
 
 .intro {
+  position: relative;
   align-self: center;
   max-width: 1000px;
   width: 100%;
@@ -300,11 +322,24 @@ button {
     padding: 0 5rem 7.5rem 5rem;
   }
 
+  &__arrow {
+    position: absolute;
+    width: 17.5rem;
+    bottom: -11.25rem;
+    left: 50%;
+    transform: translateX(-50%) rotate(100deg);
+    fill: var(--color);
+
+    @media screen and (max-width: $bp-1200) {
+      display: none;
+    }
+  }
+
   &__name {
     max-width: max-content;
     position: relative;
     font-size: 4.5rem;
-    color: $red;
+    color: var(--color);
 
     &::before {
       content: '<h1>';
@@ -345,7 +380,7 @@ button {
     max-width: max-content;
     position: relative;
     font-size: 2.4rem;
-    color: $red;
+    color: var(--color);
 
     &::before {
       content: '<p>';
@@ -433,17 +468,17 @@ button {
     font-size: 1.6rem;
     cursor: pointer;
     padding: 0.75rem 2.5rem;
-    color: $red;
+    color: var(--color);
     border: 3px solid currentColor;
     border-radius: 3px;
     transition: all 0.15s;
     margin-top: 1rem;
-    border: 3px solid $red;
-    box-shadow: 3px 3px 0 0 $red;
+    border: 3px solid var(--color);
+    box-shadow: 3px 3px 0 0 var(--color);
 
     &:hover {
-      box-shadow: 0 0 0 0 $red;
-      background-color: rgba($red, 0.1);
+      box-shadow: 0 0 0 0 var(--color);
+      background-color: rgba(var(--color), 0.1);
     }
 
     @media screen and (min-width: $bp-500) {
@@ -474,13 +509,13 @@ button {
     width: 2px;
     height: 40px;
     margin: 0.5rem auto 0 auto;
-    background-color: $red;
+    background-color: var(--color);
     border-radius: 3px;
     opacity: 0.75;
   }
 
   &__link {
-    color: $red;
+    color: var(--color);
     font-size: 2rem;
     transition: all 0.15s;
     opacity: 0.75;
@@ -507,7 +542,7 @@ button {
 
   &__heading {
     font-size: 2.75rem;
-    color: $red;
+    color: var(--color);
 
     @media screen and (min-width: $bp-500) {
       font-size: 3.25rem;
@@ -545,7 +580,7 @@ button {
       top: 50%;
       left: 0;
       transform: translateY(-50%);
-      color: $red;
+      color: var(--color);
     }
   }
 }
@@ -565,7 +600,7 @@ button {
 
   &__heading {
     font-size: 2.75rem;
-    color: $red;
+    color: var(--color);
 
     @media screen and (min-width: $bp-500) {
       font-size: 3.25rem;
@@ -590,15 +625,15 @@ button {
     gap: 1.5rem;
     border-radius: 3px;
     overflow: hidden;
-    border: 3px solid $red;
+    border: 3px solid var(--color);
     position: relative;
     padding: 2rem;
-    box-shadow: 6px 6px 0 0 $red;
+    box-shadow: 6px 6px 0 0 var(--color);
     transition: all 0.15s;
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0 0 0 0 $red;
+      box-shadow: 0 0 0 0 var(--color);
     }
   }
 
@@ -609,7 +644,7 @@ button {
 
   &__folderIcon {
     font-size: 4rem;
-    color: $red;
+    color: var(--color);
   }
 
   &__projectInnerBox {
@@ -620,7 +655,7 @@ button {
 
   &__projectName {
     font-size: 1.6rem;
-    color: $red;
+    color: var(--color);
     font-weight: 700;
 
     @media screen and (min-width: $bp-500) {
@@ -660,7 +695,7 @@ button {
       top: 50%;
       left: 0;
       transform: translateY(-50%);
-      color: $red;
+      color: var(--color);
     }
   }
 
@@ -675,7 +710,7 @@ button {
   }
 
   &__projectLink {
-    color: $red;
+    color: var(--color);
     font-size: 2rem;
     transition: all 0.15s;
 
@@ -700,7 +735,7 @@ button {
 
   &__heading {
     font-size: 2.75rem;
-    color: $red;
+    color: var(--color);
 
     @media screen and (min-width: $bp-500) {
       font-size: 3.25rem;
@@ -737,7 +772,7 @@ button {
       top: 50%;
       left: 0;
       transform: translateY(-50%);
-      color: $red;
+      color: var(--color);
     }
   }
 
@@ -749,15 +784,15 @@ button {
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.75rem 2.5rem;
-    color: $red;
+    color: var(--color);
     border-radius: 3px;
     transition: all 0.15s;
-    border: 3px solid $red;
-    box-shadow: 3px 3px 0 0 $red;
+    border: 3px solid var(--color);
+    box-shadow: 3px 3px 0 0 var(--color);
 
     &:hover {
-      box-shadow: 0 0 0 0 $red;
-      background-color: rgba($red, 0.1);
+      box-shadow: 0 0 0 0 var(--color);
+      background-color: rgba(var(--color), 0.1);
     }
 
     @media screen and (min-width: $bp-500) {
@@ -781,7 +816,7 @@ button {
 
   &__heading {
     font-size: 2.75rem;
-    color: $red;
+    color: var(--color);
 
     @media screen and (min-width: $bp-500) {
       font-size: 3.25rem;
@@ -828,7 +863,7 @@ button {
       right: 1rem;
       font-size: 2.5rem;
       cursor: pointer;
-      color: $red;
+      color: var(--color);
 
       @media screen and (min-width: $bp-500) {
         font-size: 3rem;
@@ -837,7 +872,7 @@ button {
 
     &Icon {
       font-size: 3rem;
-      color: $red;
+      color: var(--color);
 
       @media screen and (min-width: $bp-500) {
         font-size: 3.5rem;
@@ -906,7 +941,7 @@ button {
     left: 0;
     width: 0;
     height: 3px;
-    background-color: $red;
+    background-color: var(--color);
     border-radius: 3px;
     transition: all 0.25s;
   }
@@ -938,15 +973,15 @@ button {
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.75rem 2.5rem;
-    color: $red;
+    color: var(--color);
     border-radius: 3px;
     transition: all 0.15s;
-    border: 3px solid $red;
-    box-shadow: 3px 3px 0 0 $red;
+    border: 3px solid var(--color);
+    box-shadow: 3px 3px 0 0 var(--color);
 
     &:hover {
-      box-shadow: 0 0 0 0 $red;
-      background-color: rgba($red, 0.1);
+      box-shadow: 0 0 0 0 var(--color);
+      background-color: rgba(var(--color), 0.1);
     }
 
     @media screen and (min-width: $bp-500) {
@@ -970,7 +1005,7 @@ button {
   }
 
   &__link {
-    color: $red;
+    color: var(--color);
     font-size: 2.25rem;
     transition: all 0.15s;
     opacity: 0.75;
@@ -983,7 +1018,7 @@ button {
 
   &__text {
     font-size: 1.5rem;
-    color: $red;
+    color: var(--color);
     line-height: 2.5rem;
 
     @media screen and (min-width: $bp-500) {

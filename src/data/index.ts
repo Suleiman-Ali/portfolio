@@ -1,3 +1,5 @@
+export const colors = ['#fd2155', '#0F68D0', '#FCBC04', '#20AB8A', '#9a6bff'];
+
 export const skills = [
   'JavaScript',
   'TypeScript',

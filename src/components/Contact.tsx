@@ -5,7 +5,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 import { BsX, BsXCircleFill } from 'react-icons/bs';
 import ReactLoading from 'react-loading';
 
-function Contact(): JSX.Element {
+function Contact({ currentColor }: { currentColor: string }): JSX.Element {
   const [success, setSuccess] = useState<boolean>(false);
   const [failure, setFailure] = useState<boolean>(false);
   const [sending, setSending] = useState<boolean>(false);
@@ -114,7 +114,7 @@ function Contact(): JSX.Element {
           >
             <ReactLoading
               type="cylon"
-              color="#fd2155"
+              color={currentColor}
               width="90px"
               className="contact__formMessageIcon"
             />
