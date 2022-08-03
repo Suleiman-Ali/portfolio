@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;500;600;700&display=swap');
-
+@import url('@fontsource/signika-negative/300.css');
+@import url('@fontsource/signika-negative/400.css');
+@import url('@fontsource/signika-negative/600.css');
+@import url('@fontsource/signika-negative/700.css');
 $background-color-light: #1a1a1a;
 $background-color-dark: #111111;
 $background-color-form: #2b2b2b;
@@ -87,6 +89,7 @@ button {
     border-radius: 50%;
     cursor: pointer;
     opacity: 0.75;
+    transition: all 0.1s;
 
     &--selected {
       border: 2px solid white;
@@ -328,7 +331,7 @@ button {
     bottom: -11.25rem;
     left: 50%;
     transform: translateX(-50%) rotate(100deg);
-    fill: var(--color);
+    fill: var(--color) !important;
 
     @media screen and (max-width: $bp-1200) {
       display: none;
