@@ -1,71 +1,40 @@
+import FooterLink from './FooterLink';
 import { motion } from 'framer-motion';
 import { BsGithub, BsTelephoneFill } from 'react-icons/bs';
 import { FaLinkedinIn, FaTwitter, FaAt } from 'react-icons/fa';
+import {
+  MY_GITHUB,
+  MY_LINKEDIN,
+  MY_TWITTER,
+  MY_NUMBER,
+  MY_EMAIL,
+} from '../data';
 
 function FooterLinks(): JSX.Element {
   return (
     <div className="footerLinks">
       <div className="footerLinks__links">
-        <motion.a
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          viewport={{ once: true }}
-          href="https://github.com/Suleiman-Ali"
-          target="_blank"
-          className="footerLinks__link"
-          rel="noreferrer"
-        >
+        <FooterLink delay={0.25} href={`https://github.com/${MY_GITHUB}`}>
           <BsGithub />
-        </motion.a>
-        <motion.a
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35 }}
-          viewport={{ once: true }}
-          href="https://www.linkedin.com/in/suleiman-ali-dev/"
-          target="_blank"
-          className="footerLinks__link"
-          rel="noreferrer"
+        </FooterLink>
+        <FooterLink
+          delay={0.35}
+          href={`https://www.linkedin.com/in/${MY_LINKEDIN}`}
         >
           <FaLinkedinIn />
-        </motion.a>
-        <motion.a
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45 }}
-          viewport={{ once: true }}
-          href="https://twitter.com/SuleimanAli7174"
-          target="_blank"
-          className="footerLinks__link"
-          rel="noreferrer"
-        >
+        </FooterLink>
+        <FooterLink delay={0.45} href={`https://twitter.com/${MY_TWITTER}`}>
           <FaTwitter />
-        </motion.a>
-        <motion.a
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55 }}
-          viewport={{ once: true }}
-          href="https://api.whatsapp.com/send?phone=00905524978394"
-          target="_blank"
-          className="footerLinks__link"
-          rel="noreferrer"
+        </FooterLink>
+        <FooterLink
+          delay={0.55}
+          href={`https://api.whatsapp.com/send?phone=${MY_NUMBER}`}
         >
           <BsTelephoneFill />
-        </motion.a>
-        <motion.a
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.65 }}
-          viewport={{ once: true }}
-          href="mailto:suleimanali.business@gmail.com"
-          target="_blank"
-          className="footerLinks__link"
-          rel="noreferrer"
-        >
+        </FooterLink>
+        <FooterLink delay={0.65} href={`mailto:${MY_EMAIL}`}>
           <FaAt />
-        </motion.a>
+        </FooterLink>
       </div>
       <motion.p
         className="footerLinks__text"

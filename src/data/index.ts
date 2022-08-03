@@ -1,5 +1,11 @@
 export const colors = ['#fd2155', '#0F68D0', '#FCBC04', '#20AB8A', '#9a6bff'];
-
+export const MY_GITHUB = 'Suleiman-Ali';
+export const MY_LINKEDIN = 'suleiman-ali-dev';
+export const MY_TWITTER = 'SuleimanAli7174';
+export const MY_NUMBER = '00905524978394';
+export const MY_EMAIL = 'suleimanali.business@gmail.com';
+export const MY_RESUME_LINK =
+  'https://drive.google.com/file/d/1kZ138LvHQ5Cl80FvIkGfcmgVlDEIm6AA/view';
 export const skills = [
   'JavaScript',
   'TypeScript',
@@ -23,7 +29,6 @@ export const skills = [
   'Time Management',
   'Self Learning',
 ];
-
 export const projects = [
   {
     icon: 'FaShoppingCart',
@@ -132,10 +137,9 @@ export const projects = [
     builtWith: ['HTML', 'SASS', 'Typescript', 'ReactJs'],
   },
 ];
-
 export const linkClickHandler = (e: any, id: string, setter?: any) => {
   e.preventDefault();
   //@ts-ignore
   window.scrollTo(0, document.getElementById(id).offsetTop - 50);
-  if (setter) setter(false);
+  setter();
 };

@@ -8,8 +8,8 @@ import SideLinks from './SideLinks';
 import FooterLinks from './FooterLinks';
 import Arrow from './Arrow';
 import Colors from './Colors';
-import { colors } from '../data';
 import { useState } from 'react';
+import { colors } from '../data';
 
 function App() {
   const [selectedColor, setSelectedColor] = useState<string>(colors[0]);

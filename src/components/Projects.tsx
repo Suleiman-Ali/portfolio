@@ -1,7 +1,7 @@
+import React from 'react';
+import * as FontAwesome from 'react-icons/fa';
 import { FaGithubAlt, FaLink } from 'react-icons/fa';
 import { projects } from '../data/index';
-import * as FontAwesome from 'react-icons/fa';
-import React from 'react';
 import { motion } from 'framer-motion';
 
 function Projects(): JSX.Element {

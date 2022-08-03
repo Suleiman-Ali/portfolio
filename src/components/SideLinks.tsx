@@ -1,70 +1,38 @@
+import SideLink from './SideLink';
 import { FaLinkedinIn, FaTwitter, FaAt } from 'react-icons/fa';
 import { BsTelephoneFill, BsGithub } from 'react-icons/bs';
-import { motion } from 'framer-motion';
+import {
+  MY_EMAIL,
+  MY_GITHUB,
+  MY_LINKEDIN,
+  MY_NUMBER,
+  MY_TWITTER,
+} from '../data/index';
 
 function SideLinks(): JSX.Element {
   return (
     <div className="links">
-      <motion.a
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.25 }}
-        viewport={{ once: true }}
-        href="https://github.com/Suleiman-Ali"
-        target="_blank"
-        className="links__link"
-        rel="noreferrer"
-      >
+      <SideLink delay={0.25} href={`https://github.com/${MY_GITHUB}`}>
         <BsGithub />
-      </motion.a>
-      <motion.a
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.35 }}
-        viewport={{ once: true }}
-        href="https://www.linkedin.com/in/suleiman-ali-dev/"
-        target="_blank"
-        className="links__link"
-        rel="noreferrer"
+      </SideLink>
+      <SideLink
+        delay={0.35}
+        href={`https://www.linkedin.com/in/${MY_LINKEDIN}`}
       >
         <FaLinkedinIn />
-      </motion.a>
-      <motion.a
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.45 }}
-        viewport={{ once: true }}
-        href="https://twitter.com/SuleimanAli7174"
-        target="_blank"
-        className="links__link"
-        rel="noreferrer"
-      >
+      </SideLink>
+      <SideLink delay={0.45} href={`https://twitter.com/${MY_TWITTER}`}>
         <FaTwitter />
-      </motion.a>
-      <motion.a
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.55 }}
-        viewport={{ once: true }}
-        href="https://api.whatsapp.com/send?phone=00905524978394"
-        target="_blank"
-        className="links__link"
-        rel="noreferrer"
+      </SideLink>
+      <SideLink
+        delay={0.55}
+        href={`https://api.whatsapp.com/send?phone=${MY_NUMBER}`}
       >
         <BsTelephoneFill />
-      </motion.a>
-      <motion.a
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.65 }}
-        viewport={{ once: true }}
-        href="mailto:suleimanali.business@gmail.com"
-        target="_blank"
-        className="links__link"
-        rel="noreferrer"
-      >
+      </SideLink>
+      <SideLink delay={0.65} href={`mailto:${MY_EMAIL}`}>
         <FaAt />
-      </motion.a>
+      </SideLink>
     </div>
   );
 }
