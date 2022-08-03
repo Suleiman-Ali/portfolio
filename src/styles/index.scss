@@ -1,7 +1,4 @@
-@import url('@fontsource/signika-negative/300.css');
-@import url('@fontsource/signika-negative/400.css');
-@import url('@fontsource/signika-negative/600.css');
-@import url('@fontsource/signika-negative/700.css');
+// signika-negative
 $background-color-light: #1a1a1a;
 $background-color-dark: #111111;
 $background-color-form: #2b2b2b;
@@ -32,7 +29,7 @@ html {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Signika Negative', sans-serif;
+  font-family: cursive;
 }
 
 body {
