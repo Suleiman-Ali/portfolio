@@ -15,7 +15,7 @@ function Colors({
       .getElementById('favicon')
       ?.setAttribute(
         'href',
-        `./favicons_png/logo_${color.replace('#', '')}.png`
+        `./favicons_svg/logo_${color.replace('#', '')}.svg`
       );
   };
 
