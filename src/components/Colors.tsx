@@ -13,7 +13,10 @@ function Colors({
     document.documentElement.style.setProperty('--color', color);
     document
       .getElementById('favicon')
-      ?.setAttribute('href', `./logo_${color.replace('#', '')}.svg`);
+      ?.setAttribute(
+        'href',
+        `./favicons_png/logo_${color.replace('#', '')}.png`
+      );
   };
 
   return (
