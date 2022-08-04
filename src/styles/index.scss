@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Comic Sans MS';
-  src: url('../fonts/Comic_Sans_MS.eot');
+  src: url('../fonts/Comic_Sans_MS.woff2');
   src: url('../fonts/Comic_Sans_MS.eot') format('embedded-opentype'),
     url('../fonts/Comic_Sans_MS.woff2') format('woff2'),
     url('../fonts/Comic_Sans_MS.woff') format('woff'),
@@ -39,8 +39,7 @@ html {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Comic Sans MS', system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+  font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana,
     sans-serif;
 }
 
@@ -76,7 +75,11 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 12.5rem;
+  gap: 10rem;
+
+  @media screen and (min-width: $bp-500) {
+    gap: 12.5rem;
+  }
 }
 
 .arrowUp {
@@ -448,7 +451,7 @@ button {
   gap: 2.5rem;
 
   @media screen and (min-width: $bp-800) {
-    padding: 0 5rem 0 5rem;
+    padding: 3rem 5rem 0 5rem;
   }
 
   &__heading {
@@ -506,7 +509,7 @@ button {
   gap: 2.5rem;
 
   @media screen and (min-width: $bp-800) {
-    padding: 0 5rem 0 5rem;
+    padding: 3rem 5rem 0 5rem;
   }
 
   &__heading {
@@ -646,7 +649,7 @@ button {
   gap: 2.5rem;
 
   @media screen and (min-width: $bp-800) {
-    padding: 0 5rem 0 5rem;
+    padding: 3rem 5rem 0 5rem;
   }
 
   &__heading {
@@ -727,7 +730,7 @@ button {
   gap: 2.5rem;
 
   @media screen and (min-width: $bp-800) {
-    padding: 0 5rem 0 5rem;
+    padding: 3rem 5rem 0 5rem;
   }
 
   &__heading {

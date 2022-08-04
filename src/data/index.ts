@@ -140,6 +140,6 @@ export const projects = [
 export const linkClickHandler = (e: any, id: string, setter?: any) => {
   e.preventDefault();
   //@ts-ignore
-  window.scrollTo(0, document.getElementById(id).offsetTop - 50);
+  window.scrollTo(0, document.getElementById(id).offsetTop);
   if (setter) setter();
 };
