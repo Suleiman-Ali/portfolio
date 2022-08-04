@@ -7,6 +7,7 @@ $bp-700: 700px;
 $bp-800: 799px;
 $bp-1000: 999px;
 $bp-1200: 1199px;
+$bp-1250: 1250px;
 
 :root {
   --color: #fd2155;
@@ -63,45 +64,19 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 17.5rem;
-}
-
-.colors {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: fixed;
-  top: 50%;
-  right: 3rem;
-  transform: translateY(-50%);
-
-  @media screen and (max-width: $bp-1200) {
-    display: none;
-  }
-
-  &__color {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0.75;
-    transition: all 0.1s;
-
-    &--selected {
-      border: 2px solid white;
-      opacity: 1;
-    }
-  }
+  gap: 12.5rem;
 }
 
 .arrowUp {
   position: fixed;
-  bottom: 3rem;
-  right: 3rem;
+  bottom: 0;
+  right: 0;
   color: var(--color);
   cursor: pointer;
-  font-size: 2.5rem;
-  @media screen and (max-width: $bp-1200) {
+  font-size: 2.25rem;
+  padding: 1.5rem 1rem;
+
+  @media screen and (max-width: $bp-1250) {
     display: none;
   }
 }
@@ -138,8 +113,7 @@ button {
     outline: none;
     border: none;
     color: var(--color);
-    font-size: 2.5rem;
-    opacity: 0.75;
+    font-size: 2.25rem;
     cursor: pointer;
     transition: all 0.15s;
 
@@ -226,11 +200,20 @@ button {
 }
 
 .nav {
+  width: 100%;
+  align-self: center;
+  max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 5rem;
+
+  &__box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
   &__buttons {
     display: flex;
@@ -307,6 +290,30 @@ button {
   fill: var(--color) !important;
 }
 
+.colors {
+  display: flex;
+  gap: 1rem;
+  border-top-right-radius: 15px;
+
+  @media screen and (max-width: $bp-1000) {
+    display: none;
+  }
+
+  &__color {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: all 0.1s;
+
+    &--selected {
+      border: 2px solid white;
+      opacity: 1;
+    }
+  }
+}
+
 .intro {
   position: relative;
   align-self: center;
@@ -324,12 +331,12 @@ button {
   &__arrow {
     position: absolute;
     width: 17.5rem;
-    bottom: -11.25rem;
+    bottom: -7.5rem;
     left: 50%;
     transform: translateX(-50%) rotate(100deg);
     fill: var(--color) !important;
 
-    @media screen and (max-width: $bp-1200) {
+    @media screen and (max-width: $bp-1000) {
       display: none;
     }
   }
@@ -337,38 +344,8 @@ button {
   &__name {
     max-width: max-content;
     position: relative;
-    font-size: 4.5rem;
+    font-size: 4.25rem;
     color: var(--color);
-
-    &::before {
-      content: '<h1>';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: -5rem;
-      font-style: italic;
-      color: #808080;
-      font-weight: 300;
-      @media screen and (max-width: $bp-800) {
-        display: none;
-      }
-    }
-
-    &::after {
-      content: '</h1>';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: -5rem;
-      font-style: italic;
-      color: #808080;
-      font-weight: 300;
-      @media screen and (max-width: $bp-800) {
-        display: none;
-      }
-    }
 
     @media screen and (min-width: $bp-500) {
       font-size: 6rem;
@@ -378,38 +355,8 @@ button {
   &__title {
     max-width: max-content;
     position: relative;
-    font-size: 2.4rem;
+    font-size: 2.1rem;
     color: var(--color);
-
-    &::before {
-      content: '<p>';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: -5rem;
-      font-style: italic;
-      color: #808080;
-      font-weight: 300;
-      @media screen and (max-width: $bp-800) {
-        display: none;
-      }
-    }
-
-    &::after {
-      content: '</p>';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: -5rem;
-      font-style: italic;
-      color: #808080;
-      font-weight: 300;
-      @media screen and (max-width: $bp-800) {
-        display: none;
-      }
-    }
 
     @media screen and (min-width: $bp-500) {
       font-size: 3rem;
@@ -427,36 +374,6 @@ button {
       font-size: 1.75rem;
       line-height: 3rem;
     }
-
-    &::before {
-      content: '<p>';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: -5rem;
-      font-style: italic;
-      color: #808080;
-      font-weight: 300;
-      @media screen and (max-width: $bp-800) {
-        display: none;
-      }
-    }
-
-    &::after {
-      content: '</p>';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: -5rem;
-      font-style: italic;
-      color: #808080;
-      font-weight: 300;
-      @media screen and (max-width: $bp-800) {
-        display: none;
-      }
-    }
   }
 
   &__btn {
@@ -464,7 +381,7 @@ button {
     max-width: max-content;
     background-color: transparent;
     outline: none;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     cursor: pointer;
     padding: 0.75rem 2.5rem;
     color: var(--color);
@@ -481,7 +398,7 @@ button {
     }
 
     @media screen and (min-width: $bp-500) {
-      font-size: 1.75rem;
+      font-size: 1.6rem;
     }
 
     &::before {
@@ -491,31 +408,14 @@ button {
 }
 
 .links {
-  position: fixed;
-  bottom: 0;
-  left: 6.25rem;
+  margin-top: 1rem;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media screen and (max-width: $bp-1200) {
-    display: none;
-  }
-
-  &::after {
-    content: '';
-    display: block;
-    width: 2px;
-    height: 40px;
-    margin: 0.5rem auto 0 auto;
-    background-color: var(--color);
-    border-radius: 3px;
-    opacity: 0.75;
-  }
+  align-items: center;
+  gap: 1.25rem;
 
   &__link {
     color: var(--color);
-    font-size: 2rem;
+    font-size: 2.1rem;
     transition: all 0.15s;
     opacity: 0.75;
 
@@ -586,7 +486,7 @@ button {
 
 .projects {
   align-self: center;
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%;
   padding: 0 2rem 0 2rem;
   display: flex;
@@ -600,6 +500,7 @@ button {
   &__heading {
     font-size: 2.75rem;
     color: var(--color);
+    align-self: center;
 
     @media screen and (min-width: $bp-500) {
       font-size: 3.25rem;
@@ -613,6 +514,10 @@ button {
 
     @media screen and (min-width: $bp-700) {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: $bp-1200) {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 

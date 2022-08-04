@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion';
 import { colors } from '../data';
 
+interface ColorsProps {
+  selectedColor: string;
+  colorChangeHandler: (color: string) => void;
+}
+
 function Colors({
   colorChangeHandler,
   selectedColor,
-}: {
-  selectedColor: string;
-  colorChangeHandler: (color: string) => void;
-}): JSX.Element {
+}: ColorsProps): JSX.Element {
   const onChange = (color: string) => {
     colorChangeHandler(color);
     document.documentElement.style.setProperty('--color', color);

@@ -2,7 +2,15 @@ import BigNav from './BigNav';
 import SmallNav from './SmallNav';
 import { useEffect, useState } from 'react';
 
-function Navbar(): JSX.Element {
+interface NavbarProps {
+  selectedColor: string;
+  colorChangeHandler: (color: string) => void;
+}
+
+function Navbar({
+  colorChangeHandler,
+  selectedColor,
+}: NavbarProps): JSX.Element {
   const [isNavBig, setIsNavBig] = useState<boolean>(window.innerWidth >= 800);
   const [menu, setMenu] = useState<boolean>(false);
 
@@ -17,7 +25,13 @@ function Navbar(): JSX.Element {
 
   if (!isNavBig)
     return <SmallNav closeMenu={closeMenu} openMenu={openMenu} menu={menu} />;
-  return <BigNav closeMenu={closeMenu} />;
+  return (
+    <BigNav
+      closeMenu={closeMenu}
+      colorChangeHandler={colorChangeHandler}
+      selectedColor={selectedColor}
+    />
+  );
 }
 
 export default Navbar;

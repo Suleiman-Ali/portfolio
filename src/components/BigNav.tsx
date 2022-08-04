@@ -1,3 +1,4 @@
+import Colors from './Colors';
 import BigNavBtn from './BigNavBtn';
 import { ReactComponent as Logo } from '../images/Logo.svg';
 import { motion } from 'framer-motion';
@@ -5,9 +6,15 @@ import { linkClickHandler, MY_RESUME_LINK } from '../data';
 
 interface BigNavProps {
   closeMenu: () => void;
+  colorChangeHandler: (color: string) => void;
+  selectedColor: string;
 }
 
-function BigNav({ closeMenu }: BigNavProps): JSX.Element {
+function BigNav({
+  closeMenu,
+  colorChangeHandler,
+  selectedColor,
+}: BigNavProps): JSX.Element {
   return (
     <nav className="nav">
       <motion.button
@@ -19,6 +26,12 @@ function BigNav({ closeMenu }: BigNavProps): JSX.Element {
       >
         <Logo className="logo" />
       </motion.button>
+
+      <Colors
+        colorChangeHandler={colorChangeHandler}
+        selectedColor={selectedColor}
+      />
+
       <div className="nav__buttons">
         <BigNavBtn text="Skills" delay={0.65} setter={closeMenu} />
         <BigNavBtn text="Projects" delay={0.55} setter={closeMenu} />

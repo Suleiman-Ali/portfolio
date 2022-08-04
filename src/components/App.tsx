@@ -4,10 +4,8 @@ import Skills from './Skills';
 import Projects from './Projects';
 import About from './About';
 import Contact from './Contact';
-import SideLinks from './SideLinks';
 import FooterLinks from './FooterLinks';
 import Arrow from './Arrow';
-import Colors from './Colors';
 import { useState } from 'react';
 import { colors } from '../data';
 
@@ -17,8 +15,10 @@ function App() {
 
   return (
     <div className="app" id="app">
-      <SideLinks />
-      <Navbar />
+      <Navbar
+        colorChangeHandler={colorChangeHandler}
+        selectedColor={selectedColor}
+      />
       <Intro />
       <Skills />
       <Projects />
@@ -26,10 +26,6 @@ function App() {
       <Contact currentColor={selectedColor} />
       <FooterLinks />
       <Arrow />
-      <Colors
-        colorChangeHandler={colorChangeHandler}
-        selectedColor={selectedColor}
-      />
     </div>
   );
 }
