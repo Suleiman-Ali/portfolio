@@ -6,6 +6,7 @@
     url('../fonts/Comic_Sans_MS.woff') format('woff'),
     url('../fonts/Comic_Sans_MS.ttf') format('truetype'),
     url('../fonts/Comic_Sans_MS.svg') format('svg');
+  font-display: swap;
 }
 
 $background-color-light: #1a1a1a;
@@ -39,7 +40,7 @@ html {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana,
+  font-family: 'Comic Sans MS', 'Segoe UI', cursive, Tahoma, Geneva, Verdana,
     sans-serif;
 }
 

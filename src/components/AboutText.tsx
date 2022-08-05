@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
+import { builtWhileInViewAnimation } from '../data';
 
 interface AboutTextProps {
   children: ReactNode;
@@ -10,10 +11,7 @@ function AboutText({ children, delay }: AboutTextProps): JSX.Element {
   return (
     <motion.p
       className="about__text"
-      initial={{ opacity: 0, x: -25 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ delay }}
-      viewport={{ once: true }}
+      {...builtWhileInViewAnimation('x', -25, delay)}
     >
       {children}
     </motion.p>

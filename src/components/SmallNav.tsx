@@ -2,7 +2,11 @@ import SmallNavBtn from './SmallNavBtn';
 import { ReactComponent as Logo } from '../images/Logo.svg';
 import { motion } from 'framer-motion';
 import { FaHamburger, FaXing } from 'react-icons/fa';
-import { linkClickHandler, MY_RESUME_LINK } from '../data';
+import {
+  builtWhileInViewAnimation,
+  linkClickHandler,
+  MY_RESUME_LINK,
+} from '../data';
 
 interface SmallNavProps {
   closeMenu: () => void;
@@ -23,12 +27,7 @@ function SmallNav({ closeMenu, openMenu, menu }: SmallNavProps): JSX.Element {
         >
           <Logo className="logo" />
         </motion.button>
-        <motion.button
-          initial={{ opacity: 0, y: -25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          viewport={{ once: true }}
-        >
+        <motion.button {...builtWhileInViewAnimation('y', -25, 0.25)}>
           <FaHamburger className="navSmall__iconOpen" onClick={openMenu} />
         </motion.button>
       </div>

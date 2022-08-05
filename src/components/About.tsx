@@ -1,16 +1,13 @@
 import AboutText from './AboutText';
 import { motion } from 'framer-motion';
-import { linkClickHandler } from '../data';
+import { builtWhileInViewAnimation, linkClickHandler } from '../data';
 
 function About(): JSX.Element {
   return (
     <div className="about" id="about">
       <motion.h2
         className="about__heading"
-        initial={{ opacity: 0, x: -25 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.25 }}
-        viewport={{ once: true }}
+        {...builtWhileInViewAnimation('x', -25, 0.25)}
       >
         {'<About />'}
       </motion.h2>
@@ -25,7 +22,7 @@ function About(): JSX.Element {
             high attention to detail.
           </AboutText>
           <AboutText delay={0.55}>
-            Interested in the entire Web Development field and working on
+            Interested in the entire Software Development field and working on
             ambitious projects.
           </AboutText>
           <AboutText delay={0.65}>
@@ -41,10 +38,7 @@ function About(): JSX.Element {
           </AboutText>
         </div>
         <motion.button
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.95 }}
-          viewport={{ once: true }}
+          {...builtWhileInViewAnimation('y', 25, 0.95)}
           className="about__btn"
           onClick={(e) => linkClickHandler(e, 'contact')}
         >

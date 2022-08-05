@@ -1,15 +1,12 @@
 import { motion } from 'framer-motion';
-import { skills } from '../data/index';
+import { builtWhileInViewAnimation, skills } from '../data/index';
 
 function Skills(): JSX.Element {
   return (
     <div className="skills" id="skills">
       <motion.h2
         className="skills__heading"
-        initial={{ opacity: 0, x: -25 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.25 }}
-        viewport={{ once: true }}
+        {...builtWhileInViewAnimation('x', -25, 0.25)}
       >
         {'<Skills />'}
       </motion.h2>
@@ -18,10 +15,7 @@ function Skills(): JSX.Element {
           <motion.p
             className="skills__skill"
             key={skill}
-            initial={{ opacity: 0, x: -25 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 }}
-            viewport={{ once: true }}
+            {...builtWhileInViewAnimation('x', -25, index * 0.1)}
           >
             {skill}
           </motion.p>

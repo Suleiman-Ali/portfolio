@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { linkClickHandler } from '../data';
+import { builtWhileInViewAnimation, linkClickHandler } from '../data';
 
 interface BigNavBtnProps {
   text: string;
@@ -11,10 +11,7 @@ function BigNavBtn({ delay, setter, text }: BigNavBtnProps): JSX.Element {
   return (
     <motion.button
       className="nav__btn"
-      initial={{ opacity: 0, y: -25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
-      viewport={{ once: true }}
+      {...builtWhileInViewAnimation('y', -25, delay)}
       onClick={(e) => linkClickHandler(e, text.toLowerCase(), setter)}
     >
       {text}();

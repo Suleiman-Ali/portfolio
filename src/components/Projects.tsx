@@ -1,34 +1,33 @@
 import React from 'react';
+import ProjectLink from './ProjectLink';
 import * as FontAwesome from 'react-icons/fa';
 import { FaGithubAlt, FaLink } from 'react-icons/fa';
-import { projects } from '../data/index';
+import {
+  animateProjects,
+  builtWhileInViewAnimation,
+  projects,
+} from '../data/index';
 import { motion } from 'framer-motion';
 
-let COUNT = 1;
 function Projects(): JSX.Element {
   return (
     <div className="projects" id="projects">
       <motion.h2
         className="projects__heading"
-        initial={{ opacity: 0, x: -25 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.25 }}
-        viewport={{ once: true }}
+        {...builtWhileInViewAnimation('x', -25, 0.25)}
       >
         {'<Projects />'}
       </motion.h2>
       <div className="projects__box">
         {projects.map((project) => {
-          let animateProps = { x_y: '', start: 0 };
-          if (COUNT === 4) COUNT = 1;
-          if (COUNT === 1) animateProps = { x_y: 'x', start: -25 };
-          if (COUNT === 2) animateProps = { x_y: 'y', start: 25 };
-          if (COUNT === 3) animateProps = { x_y: 'x', start: 25 };
-          COUNT++;
+          const animation = animateProjects();
           return (
             <motion.a
-              initial={{ opacity: 0, [animateProps.x_y]: [animateProps.start] }}
-              whileInView={{ opacity: 1, [animateProps.x_y]: 0 }}
+              initial={{
+                opacity: 0,
+                [animation.x_y]: [animation.start],
+              }}
+              whileInView={{ opacity: 1, [animation.x_y]: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.25 }}
               className="projects__project"
@@ -55,22 +54,12 @@ function Projects(): JSX.Element {
                   ))}
                 </div>
                 <div className="projects__projectLinks">
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    className="projects__projectLink"
-                    rel="noreferrer"
-                  >
+                  <ProjectLink href={project.githubLink}>
                     <FaGithubAlt />
-                  </a>
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    className="projects__projectLink"
-                    rel="noreferrer"
-                  >
+                  </ProjectLink>
+                  <ProjectLink href={project.liveLink}>
                     <FaLink />
-                  </a>
+                  </ProjectLink>
                 </div>
               </div>
             </motion.a>

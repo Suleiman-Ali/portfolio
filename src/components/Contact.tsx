@@ -5,7 +5,7 @@ import ContactInput from './ContactInput';
 import { motion } from 'framer-motion';
 import { send } from 'emailjs-com';
 import { useState } from 'react';
-import { MY_EMAIL } from '../data';
+import { builtWhileInViewAnimation, MY_EMAIL } from '../data';
 
 interface ContactProps {
   currentColor: string;
@@ -50,22 +50,19 @@ function Contact({ currentColor }: ContactProps): JSX.Element {
       });
   };
 
-  const animate = (delay: number, x_y: string, pos: number) => {
-    return {
-      initial: { opacity: 0, [x_y]: pos },
-      whileInView: { opacity: 1, [x_y]: 0 },
-      transition: { delay },
-      viewport: { once: true },
-    };
-  };
-
   return (
     <div className="contact" id="contact">
-      <motion.h2 className="contact__heading" {...animate(0.25, 'x', -25)}>
+      <motion.h2
+        className="contact__heading"
+        {...builtWhileInViewAnimation('x', -25, 0.25)}
+      >
         {'<Contact />'}
       </motion.h2>
       <div className="contact__box">
-        <motion.p className="contact__text" {...animate(0.35, 'x', -25)}>
+        <motion.p
+          className="contact__text"
+          {...builtWhileInViewAnimation('x', -25, 0.35)}
+        >
           I’m interested in regular work opportunities as well as freelance
           opportunities. However, if you have other request or question, don’t
           hesitate to leave a message. If you don't want to use the form, you
@@ -120,7 +117,7 @@ function Contact({ currentColor }: ContactProps): JSX.Element {
               />
             </div>
             <motion.button
-              {...animate(0.75, 'y', 25)}
+              {...builtWhileInViewAnimation('y', 25, 0.75)}
               className="contact__btn"
               type="submit"
             >

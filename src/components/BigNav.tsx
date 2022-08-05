@@ -2,7 +2,11 @@ import Colors from './Colors';
 import BigNavBtn from './BigNavBtn';
 import { ReactComponent as Logo } from '../images/Logo.svg';
 import { motion } from 'framer-motion';
-import { linkClickHandler, MY_RESUME_LINK } from '../data';
+import {
+  builtWhileInViewAnimation,
+  linkClickHandler,
+  MY_RESUME_LINK,
+} from '../data';
 
 interface BigNavProps {
   closeMenu: () => void;
@@ -38,10 +42,7 @@ function BigNav({
         <BigNavBtn text="About" delay={0.45} setter={closeMenu} />
         <BigNavBtn text="Contact" delay={0.35} setter={closeMenu} />
         <motion.a
-          initial={{ opacity: 0, y: -25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          viewport={{ once: true }}
+          {...builtWhileInViewAnimation('y', -25, 0.25)}
           className="nav__btn nav__btnResume"
           href={MY_RESUME_LINK}
           target="_blank"

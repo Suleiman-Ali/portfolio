@@ -8,6 +8,7 @@ import {
   MY_TWITTER,
   MY_NUMBER,
   MY_EMAIL,
+  builtWhileInViewAnimation,
 } from '../data';
 
 function FooterLinks(): JSX.Element {
@@ -38,10 +39,7 @@ function FooterLinks(): JSX.Element {
       </div>
       <motion.p
         className="footerLinks__text"
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.25 }}
-        viewport={{ once: true }}
+        {...builtWhileInViewAnimation('y', 25, 0.25)}
       >
         Designed & Built by Suleiman Ali
       </motion.p>

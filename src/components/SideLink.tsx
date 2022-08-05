@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { builtWhileInViewAnimation } from '../data';
 
 interface SideLinkProps {
   children: JSX.Element;
@@ -9,10 +10,7 @@ interface SideLinkProps {
 function SideLink({ children, delay, href }: SideLinkProps): JSX.Element {
   return (
     <motion.a
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
-      viewport={{ once: true }}
+      {...builtWhileInViewAnimation('y', 25, delay)}
       href={href}
       target="_blank"
       className="links__link"

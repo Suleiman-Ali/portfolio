@@ -98,7 +98,14 @@ export const projects = [
       'Portfolio is a personal website that showcases my skills & projects.',
     liveLink: 'https://suleiman-ali.online/',
     githubLink: 'https://github.com/Suleiman-Ali/portfolio',
-    builtWith: ['HTML', 'SASS', 'Typescript', 'ReactJs', 'Framer Motion'],
+    builtWith: [
+      'HTML',
+      'SASS',
+      'Typescript',
+      'ReactJs',
+      'Framer Motion',
+      'EmailJs',
+    ],
   },
   {
     icon: 'FaColumns',
@@ -137,9 +144,38 @@ export const projects = [
     builtWith: ['HTML', 'SASS', 'Typescript', 'ReactJs'],
   },
 ];
+
 export const linkClickHandler = (e: any, id: string, setter?: any) => {
   e.preventDefault();
   //@ts-ignore
   window.scrollTo(0, document.getElementById(id).offsetTop);
   if (setter) setter();
 };
+
+let COUNT = 1;
+export function animateProjects() {
+  let animateProps = { x_y: '', start: 0 };
+  if (COUNT === 4) COUNT = 1;
+  if (COUNT === 1) animateProps = { x_y: 'x', start: -25 };
+  else if (COUNT === 2) animateProps = { x_y: 'y', start: 25 };
+  else if (COUNT === 3) animateProps = { x_y: 'x', start: 25 };
+  COUNT++;
+  return animateProps;
+}
+
+export function builtWhileInViewAnimation(
+  x_y: string,
+  init_start: number,
+  delay: number,
+  init_end: number = 0,
+  o_start: number = 0,
+  o_end: number = 1,
+  once: boolean = true
+) {
+  return {
+    initial: { opacity: o_start, [x_y]: init_start },
+    whileInView: { opacity: o_end, [x_y]: init_end },
+    transition: { delay },
+    viewport: { once },
+  };
+}

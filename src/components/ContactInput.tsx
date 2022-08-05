@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { builtWhileInViewAnimation } from '../data';
 
 interface ContactInputProps {
   isTextArea?: boolean;
@@ -25,10 +26,7 @@ function ContactInput({
     return (
       <div className="contact__inputBox">
         <motion.textarea
-          initial={{ opacity: 0, [x_y]: initialPostilion }}
-          whileInView={{ opacity: 1, [x_y]: 0 }}
-          transition={{ delay }}
-          viewport={{ once: true }}
+          {...builtWhileInViewAnimation(x_y, initialPostilion, delay)}
           cols={30}
           rows={10}
           className="contact__textarea"
@@ -45,10 +43,7 @@ function ContactInput({
   return (
     <div className="contact__inputBox">
       <motion.input
-        initial={{ opacity: 0, [x_y]: initialPostilion }}
-        whileInView={{ opacity: 1, [x_y]: 0 }}
-        transition={{ delay }}
-        viewport={{ once: true }}
+        {...builtWhileInViewAnimation(x_y, initialPostilion, delay)}
         className="contact__input"
         type={type}
         required
