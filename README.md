@@ -8,5 +8,6 @@ Portfolio is a personal website that showcases my skills & projects.
 - HTML with JSX
 - CSS with SCSS
 - JavaScript with Typescript
+- ReactJs
 - Framer Motion
 - EmailJs
