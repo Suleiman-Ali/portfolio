@@ -1,7 +1,6 @@
-import React from 'react';
 import ProjectLink from './ProjectLink';
-import * as FontAwesome from 'react-icons/fa';
 import { FaGithubAlt, FaLink } from 'react-icons/fa';
+import { createElement } from 'react';
 import {
   animateProjects,
   builtWhileInViewAnimation,
@@ -38,7 +37,7 @@ function Projects(): JSX.Element {
             >
               <i className="projects__folderIcon">
                 {/* @ts-ignore */}
-                {React.createElement(FontAwesome[project.icon])}
+                {createElement(project.icon)}
               </i>
 
               <div className="projects__projectInnerBox">

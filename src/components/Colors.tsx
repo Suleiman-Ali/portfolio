@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { builtWhileInViewAnimation, colors } from '../data';
+import { colors } from '../data';
 
 interface ColorsProps {
   selectedColor: string;

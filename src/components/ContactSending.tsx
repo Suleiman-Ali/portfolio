@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import ReactLoading from 'react-loading';
+import { ReactComponent as Loading } from '../images/Loading.svg';
 
 interface ContactSendingProps {
   color: string;
@@ -13,12 +13,7 @@ function ContactSending({ color }: ContactSendingProps): JSX.Element {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <ReactLoading
-        type="cylon"
-        color={color}
-        width="90px"
-        className="contact__formMessageIcon"
-      />
+      <Loading className="contact__formMessageIcon" />
       <p className="contact__formMessageMessage">Your message is being sent.</p>
     </motion.div>
   );

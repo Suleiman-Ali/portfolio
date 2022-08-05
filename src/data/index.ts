@@ -1,3 +1,15 @@
+import {
+  FaBriefcase,
+  FaCalculator,
+  FaCode,
+  FaColumns,
+  FaDice,
+  FaGithubSquare,
+  FaShoppingCart,
+  FaStopwatch20,
+  FaVideo,
+} from 'react-icons/fa';
+
 export const colors = ['#fd2155', '#0F68D0', '#FCBC04', '#20AB8A', '#9a6bff'];
 export const MY_GITHUB = 'Suleiman-Ali';
 export const MY_LINKEDIN = 'suleiman-ali-dev';
@@ -31,7 +43,7 @@ export const skills = [
 ];
 export const projects = [
   {
-    icon: 'FaShoppingCart',
+    icon: FaShoppingCart,
     name: 'The Store',
     description:
       'The Store is an online store where users can do online shopping.',
@@ -49,7 +61,7 @@ export const projects = [
     ],
   },
   {
-    icon: 'FaVideo',
+    icon: FaVideo,
     name: 'Movies Info',
     description:
       'Movies Info is an app where users can view details of their favorite TV Shows and Movies, it is similar to IMDB.',
@@ -65,7 +77,7 @@ export const projects = [
     ],
   },
   {
-    icon: 'FaBriefcase',
+    icon: FaBriefcase,
     name: 'Job Listings',
     description:
       'Job Listings is an app where users can post and look for new jobs, it is similar to Weworkremotely.',
@@ -83,7 +95,7 @@ export const projects = [
     ],
   },
   {
-    icon: 'FaGithubSquare',
+    icon: FaGithubSquare,
     name: 'Github Finder',
     description:
       'Github Finder is an app where users can search for github users and view their profile details.',
@@ -92,7 +104,7 @@ export const projects = [
     builtWith: ['HTML', 'SASS', 'Typescript', 'ReactJs', 'Github API'],
   },
   {
-    icon: 'FaCode',
+    icon: FaCode,
     name: 'Portfolio',
     description:
       'Portfolio is a personal website that showcases my skills & projects.',
@@ -108,7 +120,7 @@ export const projects = [
     ],
   },
   {
-    icon: 'FaColumns',
+    icon: FaColumns,
     name: 'Kanban',
     description:
       'Kanban is an implementation of Kanban boards which is a visual system used to view tasks at various stages.',
@@ -117,7 +129,7 @@ export const projects = [
     builtWith: ['HTML', 'SASS', 'Typescript', 'ReactJs'],
   },
   {
-    icon: 'FaStopwatch20',
+    icon: FaStopwatch20,
     name: 'Pomodoro',
     description:
       'Pomodoro is an implementation of Pomodoro technique which is a time management method.',
@@ -126,7 +138,7 @@ export const projects = [
     builtWith: ['HTML', 'SASS', 'Typescript', 'ReactJs'],
   },
   {
-    icon: 'FaCalculator',
+    icon: FaCalculator,
     name: 'Calculator',
     description:
       'Calculator is a simple equation solver, it includes all basic math operations.',
@@ -135,7 +147,7 @@ export const projects = [
     builtWith: ['HTML', 'SASS', 'Typescript', 'ReactJs', 'MathJs'],
   },
   {
-    icon: 'FaDice',
+    icon: FaDice,
     name: 'Rock Paper Scissors',
     description:
       'Rock Paper Scissors is a simple childhood game played by at least two.',
