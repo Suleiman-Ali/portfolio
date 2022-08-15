@@ -13,7 +13,7 @@ function Projects(): JSX.Element {
     <div className="projects" id="projects">
       <motion.h2
         className="projects__heading"
-        {...builtWhileInViewAnimation('x', -25, 0.25)}
+        {...builtWhileInViewAnimation('y', 25, 0.25)}
       >
         {'<Projects />'}
       </motion.h2>
