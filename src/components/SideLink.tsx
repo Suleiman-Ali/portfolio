@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 import { builtWhileInViewAnimation } from '../data';
 
 interface SideLinkProps {
@@ -9,15 +9,17 @@ interface SideLinkProps {
 
 function SideLink({ children, delay, href }: SideLinkProps): JSX.Element {
   return (
-    <motion.a
-      {...builtWhileInViewAnimation('y', 25, delay)}
-      href={href}
-      target="_blank"
-      className="links__link"
-      rel="noreferrer"
-    >
-      {children}
-    </motion.a>
+    <LazyMotion features={domAnimation}>
+      <m.a
+        {...builtWhileInViewAnimation('y', 25, delay)}
+        href={href}
+        target="_blank"
+        className="links__link"
+        rel="noreferrer"
+      >
+        {children}
+      </m.a>
+    </LazyMotion>
   );
 }
 

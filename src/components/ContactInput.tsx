@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m, domAnimation, LazyMotion } from 'framer-motion';
 import { builtWhileInViewAnimation } from '../data';
 
 interface ContactInputProps {
@@ -24,12 +24,31 @@ function ContactInput({
 }: ContactInputProps): JSX.Element {
   if (isTextArea)
     return (
+      <LazyMotion features={domAnimation}>
+        <div className="contact__inputBox">
+          <m.textarea
+            {...builtWhileInViewAnimation(x_y, initialPostilion, delay)}
+            cols={30}
+            rows={10}
+            className="contact__textarea"
+            required
+            placeholder={name}
+            name={name.toLowerCase()}
+            value={value}
+            onChange={onChange}
+          />
+          <div className="contact__inputAfter" />
+        </div>
+      </LazyMotion>
+    );
+
+  return (
+    <LazyMotion features={domAnimation}>
       <div className="contact__inputBox">
-        <motion.textarea
+        <m.input
           {...builtWhileInViewAnimation(x_y, initialPostilion, delay)}
-          cols={30}
-          rows={10}
-          className="contact__textarea"
+          className="contact__input"
+          type={type}
           required
           placeholder={name}
           name={name.toLowerCase()}
@@ -38,22 +57,7 @@ function ContactInput({
         />
         <div className="contact__inputAfter" />
       </div>
-    );
-
-  return (
-    <div className="contact__inputBox">
-      <motion.input
-        {...builtWhileInViewAnimation(x_y, initialPostilion, delay)}
-        className="contact__input"
-        type={type}
-        required
-        placeholder={name}
-        name={name.toLowerCase()}
-        value={value}
-        onChange={onChange}
-      />
-      <div className="contact__inputAfter" />
-    </div>
+    </LazyMotion>
   );
 }
 

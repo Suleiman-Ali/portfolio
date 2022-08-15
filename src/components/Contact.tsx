@@ -2,7 +2,7 @@ import ContactSuccess from './ContactSuccess';
 import ContactFailure from './ContactFailure';
 import ContactSending from './ContactSending';
 import ContactInput from './ContactInput';
-import { motion } from 'framer-motion';
+import { m, domAnimation, LazyMotion } from 'framer-motion';
 import { send } from '@emailjs/browser';
 import { useState } from 'react';
 import { builtWhileInViewAnimation, MY_EMAIL } from '../data';
@@ -48,82 +48,84 @@ function Contact(): JSX.Element {
   };
 
   return (
-    <div className="contact" id="contact">
-      <motion.h2
-        className="contact__heading"
-        {...builtWhileInViewAnimation('x', -25, 0.25)}
-      >
-        {'<Contact />'}
-      </motion.h2>
-      <div className="contact__box">
-        <motion.p
-          className="contact__text"
-          {...builtWhileInViewAnimation('x', -25, 0.35)}
+    <LazyMotion features={domAnimation}>
+      <div className="contact" id="contact">
+        <m.h2
+          className="contact__heading"
+          {...builtWhileInViewAnimation('x', -25, 0.25)}
         >
-          I’m interested in regular work opportunities as well as freelance
-          opportunities. However, if you have other request or question, don’t
-          hesitate to leave a message. If you don't want to use the form, you
-          can reach out to me at <u>{MY_EMAIL}</u>
-        </motion.p>
+          {'<Contact />'}
+        </m.h2>
+        <div className="contact__box">
+          <m.p
+            className="contact__text"
+            {...builtWhileInViewAnimation('x', -25, 0.35)}
+          >
+            I’m interested in regular work opportunities as well as freelance
+            opportunities. However, if you have other request or question, don’t
+            hesitate to leave a message. If you don't want to use the form, you
+            can reach out to me at <u>{MY_EMAIL}</u>
+          </m.p>
 
-        {success && <ContactSuccess onClick={successChangeHandler} />}
-        {failure && <ContactFailure onClick={failureChangeHandler} />}
-        {sending && <ContactSending />}
+          {success && <ContactSuccess onClick={successChangeHandler} />}
+          {failure && <ContactFailure onClick={failureChangeHandler} />}
+          {sending && <ContactSending />}
 
-        {!success && !failure && !sending && (
-          <form className="contact__form" onSubmit={onSubmit}>
-            <div className="contact__formMain">
-              <div className="contact__formBox">
+          {!success && !failure && !sending && (
+            <form className="contact__form" onSubmit={onSubmit}>
+              <div className="contact__formMain">
+                <div className="contact__formBox">
+                  <ContactInput
+                    x_y="x"
+                    initialPostilion={-25}
+                    delay={0.45}
+                    type="text"
+                    name="Name"
+                    value={toSend.name}
+                    onChange={handleChange}
+                  />
+                  <ContactInput
+                    x_y="x"
+                    initialPostilion={25}
+                    delay={0.45}
+                    type="email"
+                    name="Email"
+                    value={toSend.email}
+                    onChange={handleChange}
+                  />
+                </div>
                 <ContactInput
-                  x_y="x"
-                  initialPostilion={-25}
-                  delay={0.45}
+                  x_y="y"
+                  initialPostilion={25}
+                  delay={0.55}
                   type="text"
-                  name="Name"
-                  value={toSend.name}
+                  name="Subject"
+                  value={toSend.subject}
                   onChange={handleChange}
                 />
                 <ContactInput
-                  x_y="x"
+                  isTextArea={true}
+                  x_y="y"
                   initialPostilion={25}
-                  delay={0.45}
-                  type="email"
-                  name="Email"
-                  value={toSend.email}
+                  type="text"
+                  delay={0.65}
+                  name="Message"
+                  value={toSend.message}
                   onChange={handleChange}
                 />
               </div>
-              <ContactInput
-                x_y="y"
-                initialPostilion={25}
-                delay={0.55}
-                type="text"
-                name="Subject"
-                value={toSend.subject}
-                onChange={handleChange}
-              />
-              <ContactInput
-                isTextArea={true}
-                x_y="y"
-                initialPostilion={25}
-                type="text"
-                delay={0.65}
-                name="Message"
-                value={toSend.message}
-                onChange={handleChange}
-              />
-            </div>
-            <motion.button
-              {...builtWhileInViewAnimation('y', 25, 0.75)}
-              className="contact__btn"
-              type="submit"
-            >
-              Send Message!
-            </motion.button>
-          </form>
-        )}
+              <m.button
+                {...builtWhileInViewAnimation('y', 25, 0.75)}
+                className="contact__btn"
+                type="submit"
+              >
+                Send Message!
+              </m.button>
+            </form>
+          )}
+        </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 }
 

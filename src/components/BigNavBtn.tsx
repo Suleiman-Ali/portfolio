@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m, domAnimation, LazyMotion } from 'framer-motion';
 import { builtWhileInViewAnimation, linkClickHandler } from '../data';
 
 interface BigNavBtnProps {
@@ -9,13 +9,15 @@ interface BigNavBtnProps {
 
 function BigNavBtn({ delay, setter, text }: BigNavBtnProps): JSX.Element {
   return (
-    <motion.button
-      className="nav__btn"
-      {...builtWhileInViewAnimation('y', -25, delay)}
-      onClick={(e) => linkClickHandler(e, text.toLowerCase(), setter)}
-    >
-      {text}();
-    </motion.button>
+    <LazyMotion features={domAnimation}>
+      <m.button
+        className="nav__btn"
+        {...builtWhileInViewAnimation('y', -25, delay)}
+        onClick={(e) => linkClickHandler(e, text.toLowerCase(), setter)}
+      >
+        {text}();
+      </m.button>
+    </LazyMotion>
   );
 }
 

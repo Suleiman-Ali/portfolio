@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 import { ReactNode } from 'react';
 import { builtWhileInViewAnimation } from '../data';
 
@@ -9,12 +9,14 @@ interface AboutTextProps {
 
 function AboutText({ children, delay }: AboutTextProps): JSX.Element {
   return (
-    <motion.p
-      className="about__text"
-      {...builtWhileInViewAnimation('x', -25, delay)}
-    >
-      {children}
-    </motion.p>
+    <LazyMotion features={domAnimation}>
+      <m.p
+        className="about__text"
+        {...builtWhileInViewAnimation('x', -25, delay)}
+      >
+        {children}
+      </m.p>
+    </LazyMotion>
   );
 }
 

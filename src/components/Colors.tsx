@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m, domAnimation, LazyMotion } from 'framer-motion';
 import { colors } from '../data';
 
 interface ColorsProps {
@@ -22,21 +22,23 @@ function Colors({
   };
 
   return (
-    <div className="colors">
-      {colors.map((color, index) => (
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 0.75, y: 0 }}
-          transition={{ delay: index * 0.15 }}
-          className={`colors__color ${
-            selectedColor === color ? 'colors__color--selected' : ''
-          }`}
-          key={color}
-          style={{ backgroundColor: color }}
-          onClick={() => onChange(color)}
-        />
-      ))}
-    </div>
+    <LazyMotion features={domAnimation}>
+      <div className="colors">
+        {colors.map((color, index) => (
+          <m.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 0.75, y: 0 }}
+            transition={{ delay: index * 0.15 }}
+            className={`colors__color ${
+              selectedColor === color ? 'colors__color--selected' : ''
+            }`}
+            key={color}
+            style={{ backgroundColor: color }}
+            onClick={() => onChange(color)}
+          />
+        ))}
+      </div>
+    </LazyMotion>
   );
 }
 
