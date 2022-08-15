@@ -3,15 +3,11 @@ import ContactFailure from './ContactFailure';
 import ContactSending from './ContactSending';
 import ContactInput from './ContactInput';
 import { motion } from 'framer-motion';
-import { send } from 'emailjs-com';
+import { send } from '@emailjs/browser';
 import { useState } from 'react';
 import { builtWhileInViewAnimation, MY_EMAIL } from '../data';
 
-interface ContactProps {
-  currentColor: string;
-}
-
-function Contact({ currentColor }: ContactProps): JSX.Element {
+function Contact(): JSX.Element {
   const [success, setSuccess] = useState<boolean>(false);
   const [failure, setFailure] = useState<boolean>(false);
   const [sending, setSending] = useState<boolean>(false);
@@ -32,6 +28,7 @@ function Contact({ currentColor }: ContactProps): JSX.Element {
     e.preventDefault();
     setSending(true);
     const toSendCopy = { ...toSend };
+    toSendCopy.message = toSendCopy.message.replaceAll('\n', '<br/>');
     setToSend({ subject: '', name: '', message: '', email: '' });
 
     send(
@@ -71,7 +68,7 @@ function Contact({ currentColor }: ContactProps): JSX.Element {
 
         {success && <ContactSuccess onClick={successChangeHandler} />}
         {failure && <ContactFailure onClick={failureChangeHandler} />}
-        {sending && <ContactSending color={currentColor} />}
+        {sending && <ContactSending />}
 
         {!success && !failure && !sending && (
           <form className="contact__form" onSubmit={onSubmit}>

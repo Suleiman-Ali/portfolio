@@ -1,11 +1,7 @@
 import { motion } from 'framer-motion';
 import { ReactComponent as Loading } from '../images/Loading.svg';
 
-interface ContactSendingProps {
-  color: string;
-}
-
-function ContactSending({ color }: ContactSendingProps): JSX.Element {
+function ContactSending(): JSX.Element {
   return (
     <motion.div
       className="contact__formMessage"

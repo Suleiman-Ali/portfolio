@@ -23,7 +23,7 @@ function App() {
       <Skills />
       <Projects />
       <About />
-      <Contact currentColor={selectedColor} />
+      <Contact />
       <FooterLinks />
       <Arrow />
     </div>
