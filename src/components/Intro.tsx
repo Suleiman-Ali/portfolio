@@ -19,11 +19,11 @@ function Intro(): JSX.Element {
           Suleiman Ali
         </m.h1>
         <m.p className="intro__title" {...animate(0.5)}>
-          Front End Web Developer
+          Front End Developer
         </m.p>
         <m.p className="intro__text" {...animate(0.6)}>
-          I'm a self-taught passionate Front End Web Developer with 2+ years of
-          proven experience providing well-implemented web solutions
+          I'm a self-taught Front End Developer with 2+ years of software
+          development experience providing well-implemented web solutions
           incorporating a range of technologies.
         </m.p>
         <SideLinks />
