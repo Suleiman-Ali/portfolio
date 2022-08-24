@@ -76,7 +76,7 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10rem;
+  gap: 7.5rem;
 
   @media screen and (min-width: $bp-500) {
     gap: 12.5rem;
@@ -340,6 +340,10 @@ button {
   flex-direction: column;
   gap: 0.75rem;
 
+  @media screen and (min-width: $bp-500) {
+    align-items: center;
+  }
+
   @media screen and (min-width: $bp-800) {
     padding: 0 5rem 7.5rem 5rem;
   }
@@ -347,9 +351,9 @@ button {
   &__arrow {
     position: absolute;
     width: 17.5rem;
-    bottom: -7.5rem;
+    bottom: -11rem;
     left: 50%;
-    transform: translateX(-50%) rotate(100deg);
+    transform: translateX(-50%) rotate(110deg);
     fill: var(--color) !important;
 
     @media screen and (max-width: $bp-1000) {
@@ -387,6 +391,7 @@ button {
     color: white;
 
     @media screen and (min-width: $bp-500) {
+      text-align: center;
       font-size: 1.75rem;
       line-height: 3rem;
     }
