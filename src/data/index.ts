@@ -46,7 +46,7 @@ export const projects = [
     icon: FaShoppingCart,
     name: 'The Store',
     description:
-      'The Store is an online store where users can do online shopping.',
+      'The Store is an online store where users can find a variety of products and purchase them.',
     liveLink: 'https://the-store.pages.dev/',
     githubLink: 'https://github.com/Suleiman-Ali/the-store-front-end',
     builtWith: [
@@ -64,7 +64,7 @@ export const projects = [
     icon: FaVideo,
     name: 'Movies Info',
     description:
-      'Movies Info is an app where users can view details of their favorite TV Shows and Movies, it is similar to IMDB.',
+      'Movies Info is an information database where users can view details about their favorite shows and movies.',
     liveLink: 'https://movies-info.pages.dev/',
     githubLink: 'https://github.com/Suleiman-Ali/movies-info',
     builtWith: [
@@ -80,7 +80,7 @@ export const projects = [
     icon: FaBriefcase,
     name: 'Job Listings',
     description:
-      'Job Listings is an app where users can post and look for new jobs, it is similar to Weworkremotely.',
+      'Job Listings is a job board where users can post and look for new jobs.',
     liveLink: 'https://job-listings-4qg.pages.dev/',
     githubLink: 'https://github.com/Suleiman-Ali/job-listings-front-end',
     builtWith: [
