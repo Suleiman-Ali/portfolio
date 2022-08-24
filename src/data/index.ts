@@ -17,7 +17,7 @@ export const MY_TWITTER = 'SuleimanAli7174';
 export const MY_NUMBER = '00905524978394';
 export const MY_EMAIL = 'suleimanali.business@gmail.com';
 export const MY_RESUME_LINK =
-  'https://drive.google.com/file/d/13yTlkUKPrRVr9uaRc8j7JeAMusmDg7FH/view?usp=sharing';
+  'https://drive.google.com/file/d/113jMjv0ai3FMWwuOu4YWyWIKeJ6pemyL/view?usp=sharing';
 export const skills = [
   'JavaScript',
   'TypeScript',
