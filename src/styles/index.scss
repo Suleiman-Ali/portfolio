@@ -350,10 +350,10 @@ button {
 
   &__arrow {
     position: absolute;
-    width: 17.5rem;
-    bottom: -11rem;
+    width: 15rem;
+    bottom: -7.5rem;
     left: 50%;
-    transform: translateX(-50%) rotate(110deg);
+    transform: translateX(-50%) rotate(115deg);
     fill: var(--color) !important;
 
     @media screen and (max-width: $bp-1000) {
