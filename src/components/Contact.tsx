@@ -62,9 +62,9 @@ function Contact(): JSX.Element {
             {...builtWhileInViewAnimation('x', -25, 0.35)}
           >
             I’m interested in regular work opportunities as well as freelance
-            opportunities. However, if you have other request or question, don’t
-            hesitate to leave a message. If you don't want to use the form, you
-            can reach out to me at <u>{MY_EMAIL}</u>
+            opportunities. However, if you have any other requests or questions,
+            don’t hesitate to leave a message. If you don't want to use the
+            form, you can reach out to me at <u>{MY_EMAIL}</u>
           </m.p>
 
           {success && <ContactSuccess onClick={successChangeHandler} />}

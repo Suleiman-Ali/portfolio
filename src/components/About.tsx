@@ -30,12 +30,12 @@ function About(): JSX.Element {
               I spend my free time reading, learning, and applying what I learn.
             </AboutText>
             <AboutText delay={0.75}>
-              I've recently got my Higher National Diploma (HND) in Software
-              Engineering, from which I graduated with distinction.
+              I recently got my Higher National Diploma (HND) in Software
+              Engineering, from which I graduated with distinction (GPA: 4.0).
             </AboutText>
             <AboutText delay={0.85}>
-              I'm always looking forward to new opportunities where I can extend
-              and/or apply my knowledge.
+              I'm always looking forward to new opportunities where I can apply
+              and/or extend my knowledge.
             </AboutText>
           </div>
           <m.button

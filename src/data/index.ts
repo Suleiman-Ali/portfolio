@@ -16,6 +16,7 @@ export const MY_LINKEDIN = 'suleiman-ali-dev';
 export const MY_TWITTER = 'SuleimanAli7174';
 export const MY_NUMBER = '00905524978394';
 export const MY_EMAIL = 'suleimanali.business@gmail.com';
+export const MY_WHATSAPP = 'NHEGCZDIISIYD1';
 export const MY_RESUME_LINK =
   'https://drive.google.com/file/d/113jMjv0ai3FMWwuOu4YWyWIKeJ6pemyL/view?usp=sharing';
 export const skills = [
@@ -105,9 +106,9 @@ export const projects = [
   },
   {
     icon: FaCode,
-    name: 'Portfolio',
+    name: 'Personal Website',
     description:
-      "Portfolio is a personal website that showcases person's details, skills, and projects.",
+      "Personal Website that showcases person's details, skills, and projects.",
     liveLink: 'https://suleiman-ali.online/',
     githubLink: 'https://github.com/Suleiman-Ali/portfolio',
     builtWith: [
@@ -132,7 +133,7 @@ export const projects = [
     icon: FaStopwatch20,
     name: 'Pomodoro',
     description:
-      'Pomodoro is an implementation of Pomodoro technique which is a time management method.',
+      'Pomodoro is an implementation of the pomodoro technique which is a time management method.',
     liveLink: 'https://pomodoro-78i.pages.dev/',
     githubLink: 'https://github.com/Suleiman-Ali/pomodoro',
     builtWith: ['HTML', 'SASS', 'Typescript', 'ReactJs'],
