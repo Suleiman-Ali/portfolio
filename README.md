@@ -1,6 +1,6 @@
-# Portfolio 🧑🏻‍💻
+# Personal Website 🧑🏻‍💻
 
-Portfolio is a personal website that showcases person's details, skills, and projects.
+Personal Website that showcases a person's details, skills, and projects.
 
 ![Alt text](./site-image.png)
 
