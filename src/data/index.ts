@@ -108,7 +108,7 @@ export const projects = [
     icon: FaCode,
     name: 'Personal Website',
     description:
-      "Personal Website that showcases person's details, skills, and projects.",
+      "Personal Website that showcases a person's details, skills, and projects.",
     liveLink: 'https://suleiman-ali.online/',
     githubLink: 'https://github.com/Suleiman-Ali/portfolio',
     builtWith: [
