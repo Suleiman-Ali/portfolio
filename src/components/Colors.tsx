@@ -26,7 +26,7 @@ function Colors({
       <div className="colors">
         {colors.map((color, index) => (
           <m.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: -25 }}
             animate={{ opacity: 0.75, y: 0 }}
             transition={{ delay: index * 0.15 }}
             className={`colors__color ${

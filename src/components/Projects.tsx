@@ -36,13 +36,24 @@ function Projects(): JSX.Element {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="projects__folderIcon">
-                  {/* @ts-ignore */}
-                  {createElement(project.icon)}
-                </i>
+                <div className="projects__projectHeader">
+                  <i className="projects__folderIcon">
+                    {/* @ts-ignore */}
+                    {createElement(project.icon)}
+                  </i>
+                  <p className="projects__projectName">{project.name}</p>
+
+                  <div className="projects__projectLinks">
+                    <ProjectLink href={project.githubLink}>
+                      <FaGithubAlt />
+                    </ProjectLink>
+                    <ProjectLink href={project.liveLink}>
+                      <FaLink />
+                    </ProjectLink>
+                  </div>
+                </div>
 
                 <div className="projects__projectInnerBox">
-                  <p className="projects__projectName">{project.name}</p>
                   <p className="projects__projectDescription">
                     {project.description}
                   </p>
@@ -52,14 +63,6 @@ function Projects(): JSX.Element {
                         {tech}
                       </p>
                     ))}
-                  </div>
-                  <div className="projects__projectLinks">
-                    <ProjectLink href={project.githubLink}>
-                      <FaGithubAlt />
-                    </ProjectLink>
-                    <ProjectLink href={project.liveLink}>
-                      <FaLink />
-                    </ProjectLink>
                   </div>
                 </div>
               </m.a>

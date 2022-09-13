@@ -218,7 +218,7 @@ button {
 .nav {
   width: 100%;
   align-self: center;
-  max-width: 1200px;
+  max-width: 1250px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -470,10 +470,7 @@ button {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-
-    @media screen and (min-width: $bp-500) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    grid-template-columns: repeat(2, 1fr);
 
     @media screen and (min-width: $bp-700) {
       grid-template-columns: repeat(3, 1fr);
@@ -491,8 +488,15 @@ button {
       font-size: 1.75rem;
     }
 
+    @media screen and (max-width: $bp-500) {
+      &:nth-child(n + 15) {
+        grid-column: 1 / span 2;
+      }
+    }
+
     &::before {
-      content: '▹';
+      font-size: 1rem;
+      content: '⦿';
       position: absolute;
       top: 50%;
       left: 0;
@@ -504,7 +508,7 @@ button {
 
 .projects {
   align-self: center;
-  max-width: 1200px;
+  max-width: 1250px;
   width: 100%;
   padding: 0 2rem 0 2rem;
   display: flex;
@@ -559,13 +563,19 @@ button {
     }
   }
 
+  &__projectHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__projectImg {
     position: relative;
     width: 100%;
   }
 
   &__folderIcon {
-    font-size: 4rem;
+    font-size: 2.5rem;
     color: var(--color);
   }
 
@@ -576,6 +586,8 @@ button {
   }
 
   &__projectName {
+    flex: 1;
+    text-align: center;
     font-size: 1.6rem;
     color: var(--color);
     font-weight: 700;
@@ -612,7 +624,8 @@ button {
     }
 
     &::before {
-      content: '▹';
+      font-size: 1rem;
+      content: '⦿';
       position: absolute;
       top: 50%;
       left: 0;
@@ -623,12 +636,8 @@ button {
 
   &__projectLinks {
     display: flex;
-    justify-content: left;
     align-items: center;
     gap: 1rem;
-    position: absolute;
-    top: 3rem;
-    right: 2rem;
   }
 
   &__projectLink {
@@ -689,7 +698,8 @@ button {
     }
 
     &::before {
-      content: '▹';
+      font-size: 1rem;
+      content: '⦿';
       position: absolute;
       top: 50%;
       left: 0;
@@ -751,15 +761,32 @@ button {
     gap: 2rem;
   }
 
+  &__textBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   &__text {
     position: relative;
     font-size: 1.6rem;
     color: white;
+    padding-left: 2rem;
     line-height: 2.5rem;
 
     @media screen and (min-width: $bp-500) {
       font-size: 1.75rem;
       line-height: 3rem;
+    }
+
+    &::before {
+      font-size: 1rem;
+      content: '⦿';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      color: var(--color);
     }
   }
 
